@@ -3,8 +3,8 @@
 All accounts needed for the labs in this course have credentials displayed on
 the classroom welcome page.
 
-.callout.info Your instructor will provide you with a 4 digit class id. Replace the `XXXX` in
-these instructions with that ID.
+**_Your instructor will provide you with a 4 digit class id. Replace the `XXXX` in
+these instructions with that ID._**
 
 Using your computer login to `https://classXXXX.classroom.puppet.com`
 
@@ -20,7 +20,7 @@ Login with `studentN@puppet.com` e.g. `student0@puppet.com.`
 
 ## Steps:
 
-.callout.info Requirements: An SSH client such as Terminal.app or iTerm2.app, or optionally Microsoft Remote Desktop ( can be found preinstalled on Windows and in the macOS AppStore.)
+**_Requirements: An SSH client such as Terminal.app or iTerm2.app, or optionally Microsoft Remote Desktop (can be found preinstalled on Windows and in the macOS AppStore.)_**
 
 > For macOS use Microsoft Remote Desktop version 10 and higher
 
@@ -37,23 +37,24 @@ on Windows.
 From the Welcome page download the "student.pem" private key file. Note where
 it is located as you will use it as the value of an argument below.
 
-.callout.info Do not use the `private_key.ppk` file, this file is formatted for the windows PuTTY application.
+**_Do not use the `private_key.ppk` file, this file is formatted for the windows PuTTY application._**
 
-Using a terminal (Terminal.app, Konsol) type
+Using a terminal type
 
-    @@@ Console nochrome
-    chmod 600 /path/to/downloaded/student.pem
+```
+chmod 600 /path/to/downloaded/student.pem
 
-    ssh centos@XXXXnixN.classroom.puppet.com -i /path/to/downloaded/student.pem
+ssh centos@XXXXnixN.classroom.puppet.com -i /path/to/downloaded/student.pem
+```
 
 > Tip you can type `-i` and drag the file into the Terminal window in most
 > applications , to automatically fill the path to the file in.
 
-.callout.notice Proceed to the Validate and configure the agent environment
+**_Proceed to the Validate and configure the agent environment_**
 
 ## __Optional__ Logging into Linux via Windows
 
-.callout.info The labs will be done on Linux in this course. The Windows workstation is there as a convenience should you prefer to use it.
+**_The labs will be done on Linux in this course. The Windows workstation is there as a convenience should you prefer to use it._**
 
 Using the username "Administrator" and the __windows__ "RDP Password" displayed
 to you on the welcome page, connect to the "hostname" displayed on the welcome
@@ -65,8 +66,7 @@ page under "Type: Windows".
 
 ### Connecting to the Linux Host using PuTTY or Openssh method
 
-.callout.terminal If you would like to connect directly from your macOS or Linux
-workstation skip these steps and proceed to the optional steps below.
+**_If you would like to connect directly from your macOS or Linux workstation skip these steps and proceed to the optional steps below._**
 
 #### PuTTY Method
 1. On your Windows student machine, open a PowerShell window
@@ -83,7 +83,7 @@ workstation skip these steps and proceed to the optional steps below.
     * Click **Open**
         * If prompted about the host key not being cached, select **Yes**
 
-.callout.info For any future connections to this host, you can now simply double-click **linux_machine** in the `Saved Sessions` window
+**_For any future connections to this host, you can now simply double-click **linux_machine** in the `Saved Sessions` window_**
 
 #### OpenSSH method
 
@@ -97,11 +97,12 @@ workstation skip these steps and proceed to the optional steps below.
 
 Verify that Git is installed. You will use this for version control when you edit Puppet code.
 
-.callout.thumbsup You should see output similar to the following (note: your version number may be different):
+**_You should see output similar to the following (note: your version number may be different):_**
 
-    @@@ Console nochrome
-    [centos@XXXXlinN ~]$ git --version
-    git version 1.8.3.1
+```
+[centos@XXXXlinN ~]$ git --version
+git version 1.8.3.1
+```
 
 .callout.info For all labs in this class, `sudo su -` so that you are root. All labs are to be completed as root
 
@@ -111,17 +112,19 @@ Verify that Git is installed. You will use this for version control when you edi
 
 Execute the following commands to add the required YUM repository and install the bolt package:
 
-    @@@ Console nochrome
-    sudo rpm -Uvh https://yum.puppet.com/puppet5/puppet5-release-el-7.noarch.rpm
-    sudo yum install -y puppet-bolt
+```
+sudo rpm -Uvh https://yum.puppet.com/puppet5/puppet5-release-el-7.noarch.rpm
+sudo yum install -y puppet-bolt
+```
 
 ### Step 2
 
 Now you will validate if your bolt installation is working properly:
 
-    @@@ Console nochrome
-    $ bolt --version
-    0.21.3
+```
+$ bolt --version
+1.39.0
+```
 
 ### Step 3
 
@@ -129,8 +132,7 @@ A basic installation script has been pre-staged in your home directory, here `~/
 
 Invoke the script using Bolt in order to install the agent on your local system:
 
-    @@@ Console code_wrap nochrome
-    [centos@XXXXlinN ~]$ sudo /usr/local/bin/bolt script run install_pe_agent.sh --nodes localhost
+```[centos@XXXXlinN ~]$ sudo /usr/local/bin/bolt script run install_pe_agent.sh --nodes localhost```
 
 ### Explore your new puppet agent installation
 
@@ -149,9 +151,4 @@ Invoke the script using Bolt in order to install the agent on your local system:
       * `yum install tree`
       * `yum info tree`
 
-### Mark the activity complete
-
-1. Return to the presentation in your web browser.
-1. Check off the *Activity complete* button if you see it.
-
-1. [Lab 2.1 Editing Code](Lab 02.1 Editing code)
+|  [Next Lab](../lab-02.1-Editing-code)  |
