@@ -82,7 +82,7 @@ Verify your system module branch is now in Gitlab.
     * `git push origin studentN`
     * As we did with the review module, uncomment out these lines in the [control-repo]/Puppetfile:
       
-      ```shell
+      ```
       mod 'system',
         :git => 'git@gitlab.classroom.puppet.com:puppet/system.git',
         :branch => 'studentN'
@@ -99,7 +99,7 @@ Verify your system module branch is now in Gitlab.
     
     **Sample `/etc/hosts` file:**
 
-    ```shell
+    ```
     127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
     ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 
@@ -111,7 +111,7 @@ Verify your system module branch is now in Gitlab.
 1. Run puppet again to purge your change: `puppet agent -t`
     **Expected output:**
 
-    ```shell
+    ```
     [root@1905nix0 control-repo]# puppet agent -t
     ...
     Info: Caching catalog for 1905nix0.classroom.puppet.com
