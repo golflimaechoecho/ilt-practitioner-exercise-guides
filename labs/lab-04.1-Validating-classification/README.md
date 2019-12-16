@@ -19,41 +19,42 @@ In this lab, we'll look at some debugging steps that can help you validate wheth
 
 1. Check the catalog to ensure that the parameters you specified are set.
 
-```
-$ cd $(puppet agent --configprint client_datadir)/catalog
-$ jq '.resources[] | select(.type == "Class" and .title == "Userprefs") .parameters' $(hostname).json
-```
+  ```
+  $ cd $(puppet agent --configprint client_datadir)/catalog
+  $ jq '.resources[] | select(.type == "Class" and .title == "Userprefs") .parameters' $(hostname).json
+  ```
+  Your output should look similar to this...
+
+  ```json
+  {
+    "editor": "vim",
+    "shell": "bash",
+    "gitprompt": true
+  }
+  ```
 
 1. Inspect the complete `Class` object to see what other interesting data you could use. Press the `up` arrow and edit the command line to remove `.parameters`.
 
-### Expected output
+  Your output should look similar to this...
 
-```shell
-[root@training ~]# cd $(puppet agent --configprint client_datadir)/catalog
-[root@training ~]# jq '.resources[] | select(.type == "Class" and .title == "Userprefs").parameters'      $(hostname).json
-    {
+  ```json
+  {
+    "type": "Class",
+    "title": "Userprefs",
+    "tags": [
+      "class",
+      "userprefs",
+      "node",
+      "master.puppetlabs.vm"
+    ],
+    "exported": false,
+    "parameters": {
       "editor": "vim",
       "shell": "bash",
       "gitprompt": true
     }
-    [root@training ~]# jq '.resources[] | select(.type == "Class" and .title == "Userprefs")' $(hostname).json
-    {
-      "type": "Class",
-      "title": "Userprefs",
-      "tags": [
-        "class",
-        "userprefs",
-        "node",
-        "master.puppetlabs.vm"
-      ],
-      "exported": false,
-      "parameters": {
-        "editor": "vim",
-        "shell": "bash",
-        "gitprompt": true
-      }
-    }
-```
+  }
+  ```
 
 #### Discussion Questions
 
@@ -62,4 +63,4 @@ $ jq '.resources[] | select(.type == "Class" and .title == "Userprefs") .paramet
 * How about if the class appeared, but not resources that it should be managing?
 * When inspecting the catalog, what other metadata could you make use of?
 
-|  [Previous Lab]()  |  [Next Lab]()  |
+|  [Previous Lab](../lab-03.3-Manage-a-file)  |  [Next Lab](../lab-04.2-Puppet-run-reports)  |
