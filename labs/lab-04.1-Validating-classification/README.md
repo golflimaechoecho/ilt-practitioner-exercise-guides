@@ -28,7 +28,7 @@ $ jq '.resources[] | select(.type == "Class" and .title == "Userprefs") .paramet
 
 ### Expected output
 
-```json
+```shell
 [root@training ~]# cd $(puppet agent --configprint client_datadir)/catalog
 [root@training ~]# jq '.resources[] | select(.type == "Class" and .title == "Userprefs").parameters'      $(hostname).json
     {
