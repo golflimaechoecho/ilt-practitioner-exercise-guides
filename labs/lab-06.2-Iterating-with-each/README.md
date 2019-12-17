@@ -34,26 +34,26 @@ class system::admins {
 
 Let's use Puppet 6 iteration. What commonalities can you see in this code? What differences do you see? Have you spotted the bug?
 
-### Build your module
-1. Create a new class `admins` with pdk
-    * Change directory to your `[modulepath]/system`
+### Create a new `admins` class
 
-      ```$ cd $(puppet agent --configprint environmentpath)/production/modules/system```
+1. Change directory to your `[modulepath]/system`
 
-    * Make a new class `admins`.
+  ```$ cd $(puppet agent --configprint environmentpath)/production/modules/system```
 
-      ```$ pdk new class admins```
+1. Make a new class `admins`.
 
-    * Make a list of all admin users that exist.
-    * Make a list of all users who have had their accounts retired.
-    * Identify the parameter(s) common to most users and the outlier(s).
-    * Correct any errors discovered.
-    * Turn each list into the appropriate data structure.
-        * You may include parameters for each user, or rely on resource defaults.
-        * Edit `manifests/admins.pp`
-    * Write the correct lambda block to manage resources for each user.
-        * Manage a `mysql_user` resource.
-        * Manage a `user` resource.
+  ```$ pdk new class admins```
+
+1. Make a list of all admin users that exist.
+  * Make a list of all users who have had their accounts retired.
+  * Identify the parameter(s) common to most users and the outlier(s).
+  * Correct any errors discovered.
+  * Turn each list into the appropriate data structure.
+    * You may include parameters for each user, or rely on resource defaults.
+    * Edit `manifests/admins.pp`
+  * Write the correct lambda block to manage resources for each user.
+    * Manage a `mysql_user` resource.
+    * Manage a `user` resource.
 
 ### Test and enforce your code
 
