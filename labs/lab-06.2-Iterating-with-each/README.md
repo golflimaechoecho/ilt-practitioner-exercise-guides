@@ -57,7 +57,7 @@ Let's use Puppet 6 iteration. What commonalities can you see in this code? What 
 
 ### Test and enforce your code
 
-1. Install the `puppetlabs/mysql` module if needed, with
+1. Install the `puppetlabs/mysql` module if needed.
 
   ```$ puppet module install puppetlabs/mysql```
 
