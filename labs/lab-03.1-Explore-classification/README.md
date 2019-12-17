@@ -79,4 +79,4 @@ These commands are the same on windows and linux:
 1. Enforce your configuration on your Linux agent.
     * `puppet agent -t`
 
-|  [Previous Lab](../lab-02.1-Editing-code)  |  [Next Lab](../lab-03.3-Manage-a-file)  |
+|  [Previous Lab](../lab-02.1-Editing-code)  |  [Next Lab](../lab-03.2-Create-a-module)  |

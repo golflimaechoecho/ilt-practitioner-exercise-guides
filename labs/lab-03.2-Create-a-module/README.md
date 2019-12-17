@@ -161,4 +161,4 @@ if [ -f /etc/bashrc ]; then
 fi
 ```
 
-|  [Previous Lab]()  |  [Next Lab]()  |
+|  [Previous Lab](../lab-03.1-Explore-classification)  |  [Next Lab](../lab-03.3-Manage-a-file)  |
