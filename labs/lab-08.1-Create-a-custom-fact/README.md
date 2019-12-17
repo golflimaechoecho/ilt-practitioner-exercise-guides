@@ -77,4 +77,4 @@ Facter.add("default_realm") do
 end
 ```
 
-|  [Previous Lab](../lab-07.2-Export-a-resource)  |  [Next Lab](../lab-09.1-Managing-file-content)  |
+|  [Previous Lab](../lab-07.2-Export-a-resource)  |  [Next Lab](../lab-08.2-Create-a-custom-function)  |
