@@ -90,10 +90,4 @@ repository. The `modules` directory is reserved for these modules.
    git push origin studentN
    ```
 
-#### Discussion Questions
-
-* How does code get deployed to the Puppet master?
-* How is code in your repository being enforced on your agent node?
-* If Puppet makes no changes in a run, what would the report look like?
-
 |  [Previous Lab](../lab-01.1-Login-welcome-page)  |  [Next Lab](../lab-03.1-Explore-classification)  |
