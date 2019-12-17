@@ -1,2 +1,0 @@
-
-|  [Previous Lab]()  |  [Next Lab]()  |

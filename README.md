@@ -37,5 +37,3 @@ Table of Contents
 * [Lab 14.2: Acceptance test a server](labs/lab-14.2-Acceptance-test-a-server)
 * [Lab 16.1: Inventory reports](labs/lab-16.1-Inventory-reports)
 * [Lab 16.2: Control puppet with puppet tasks](labs/lab-16.2-Control-puppet-with-tasks)
-* [Capstone Lab: Puppet Practitioner](labs/Capstone-lab-Puppet-Practitioner)
-* [Lab 18.1: Capstone](labs/lab-18.1-Capstone)  
