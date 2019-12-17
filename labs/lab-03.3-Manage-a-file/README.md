@@ -96,4 +96,4 @@ Welcome to <%= $fqdn %>.
 This machine is managed with Puppet.
 ```
 
-|  [Previous Lab](../lab-03.2-Manage-a-file)  |  [Next Lab](../lab-04.1-Validating-classification)  |
+|  [Previous Lab](../lab-03.2-Create-a-module)  |  [Next Lab](../lab-04.1-Validating-classification)  |

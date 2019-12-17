@@ -56,11 +56,4 @@ In this lab, we'll look at some debugging steps that can help you validate wheth
   }
   ```
 
-#### Discussion Questions
-
-* What do you think it would mean if a class that a node was classified with did
-  not show up in the `classes.txt` file?
-* How about if the class appeared, but not resources that it should be managing?
-* When inspecting the catalog, what other metadata could you make use of?
-
 |  [Previous Lab](../lab-03.3-Manage-a-file)  |  [Next Lab](../lab-04.2-Puppet-run-reports)  |
