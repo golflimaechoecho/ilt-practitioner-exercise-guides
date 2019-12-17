@@ -76,20 +76,20 @@ In this exercise, you will create a simple defined type that wraps a user type a
 
    The output should be similar to this
 
-  ```
-  # sudo -su - kaitlin
-  ______________
-  < Hello there! >
-  --------------
-    \   ^__^
-     \  (oo)\_______
-        (__)\       )\/\
-            ||----w |
-            ||     ||
-  [kaitlin@training root]$ exit
-  exit
-  #
-  ```
+   ```
+   # sudo -su - kaitlin
+   ______________
+   < Hello there! >
+   --------------
+     \   ^__^
+      \  (oo)\_______
+         (__)\       )\/\
+             ||----w |
+             ||     ||
+   [kaitlin@training root]$ exit
+   exit
+   #
+   ```
 
 # Solution
 
