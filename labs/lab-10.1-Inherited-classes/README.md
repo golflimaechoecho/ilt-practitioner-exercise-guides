@@ -239,4 +239,4 @@ class webapp::params {
 }
 ```
 
-|  [Previous Lab](../lab-11.1-Configure-hiera)  |  [Next Lab](../lab-09.2-Using-augeas)  |
+|  [Previous Lab](../lab-09.2-Using-augeas)  | [Next Lab](../lab-11.1-Configure-hiera)  |
