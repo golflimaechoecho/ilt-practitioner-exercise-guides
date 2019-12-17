@@ -1,4 +1,4 @@
-# Lab 9.1 Managing file content
+# Lab 9.1: Managing file content
 
 Puppet `file` resources are useful when you need to manage a complete configuration file. Often, however, the resource we want to manage is actually represented by only a portion of a file. One such example is the `host` type. On most Linux systems, host entries are represented by a single line in the `/etc/hosts` file. Puppet doesn't know about all things that can be represented this way. One example is cron's `allow` and `deny` files, which describe which users can run jobs by listing their usernames in a file.
 

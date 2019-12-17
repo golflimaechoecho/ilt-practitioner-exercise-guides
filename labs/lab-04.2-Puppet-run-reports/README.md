@@ -1,4 +1,4 @@
-# Lab 4.2 Puppet run reports
+# Lab 4.2: Puppet run reports
 
 Sometimes you won't have the ability to watch a Puppet run proceed. You will need to read the reports to see what happened. The Puppet Enterprise Console provides an interface for doing so, but sometimes it's useful to write scripts to show changes or to view more data than is visible in the Console. For this, we will look at the raw YAML report on the node itself.
 

@@ -1,4 +1,4 @@
-#  Lab 2.1 Editing Code
+# Lab 2.1: Editing Code
 
 Review the configuration of the classroom control repository used to deploy your version of code to
 your own Puppet environment.

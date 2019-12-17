@@ -1,4 +1,4 @@
-# Lab 3.2 Create a module
+# Lab 3.2: Create a module
 
 We’re going to start off with a relatively simple `review` module that should
 manage a named user and some configuration files. We'll also manage a

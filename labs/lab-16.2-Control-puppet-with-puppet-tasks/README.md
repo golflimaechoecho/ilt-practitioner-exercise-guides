@@ -1,4 +1,4 @@
-# Lab 16.2 Control puppet with puppet tasks
+# Lab 16.2: Control puppet with puppet tasks
 
 Puppet's standard model is for the agent to request and apply a new catalog every thirty minutes, by default. This consistency model is sufficient for maintaining system state over time,  but there are cases in which the ability to control nodes in real time or to orchestrate actions across the infrastructure is useful.
 

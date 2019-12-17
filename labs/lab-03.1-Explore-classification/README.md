@@ -1,4 +1,4 @@
-# Lab 3.1 Explore classification
+# Lab 3.1: Explore classification
 
 In this lab you are configuring a node group on the master to map your Puppet agent to this environment with your own code. Running `puppet agent -t` on your container will initiate a Puppet agent run and enforce the configuration specified in your environment. Note that we are adding classification to an *Environment Group* due to this being an academic setting. This is not best practices for a production setting.
 

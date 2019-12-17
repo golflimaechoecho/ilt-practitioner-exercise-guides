@@ -1,4 +1,4 @@
-# Lab 6.2 Iterating with each:
+# Lab 6.2: Iterating with each:
 
 Often codebases that grow organically end up with snippets of cut-and-pasted repeated code. Some parts of the repetition will be identical, and some parts will have subtle differences. Since this eventually becomes an unmaintainable mess, we must proactively refactor once we start down this path.
 
