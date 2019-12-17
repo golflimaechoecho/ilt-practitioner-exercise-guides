@@ -36,22 +36,22 @@ Let's use Puppet 6 iteration. What commonalities can you see in this code? What 
 
 ### Build your module
 1. Create a new class `admins` with pdk
-    1. Change directory to your `[modulepath]/system`
+    * Change directory to your `[modulepath]/system`
 
       ```$ cd $(puppet agent --configprint environmentpath)/production/modules/system```
 
-    1. Make a new class `admins`.
+    * Make a new class `admins`.
 
       ```$ pdk new class admins```
 
-    1. Make a list of all admin users that exist.
-    1. Make a list of all users who have had their accounts retired.
-    1. Identify the parameter(s) common to most users and the outlier(s).
-    1. Correct any errors discovered.
-    1. Turn each list into the appropriate data structure.
+    * Make a list of all admin users that exist.
+    * Make a list of all users who have had their accounts retired.
+    * Identify the parameter(s) common to most users and the outlier(s).
+    * Correct any errors discovered.
+    * Turn each list into the appropriate data structure.
         * You may include parameters for each user, or rely on resource defaults.
         * Edit `manifests/admins.pp`
-    1. Write the correct lambda block to manage resources for each user.
+    * Write the correct lambda block to manage resources for each user.
         * Manage a `mysql_user` resource.
         * Manage a `user` resource.
 
