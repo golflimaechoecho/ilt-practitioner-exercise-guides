@@ -113,7 +113,6 @@ git version 1.8.3.1
 Execute the following commands to add the required YUM repository and install the bolt package:
 
 ```
-sudo rpm -Uvh https://yum.puppet.com/puppet5/puppet5-release-el-7.noarch.rpm
 sudo yum install -y puppet-bolt
 ```
 
@@ -128,9 +127,7 @@ $ bolt --version
 
 ### Step 3
 
-A basic installation script has been pre-staged in your home directory, here `~/install_pe_agent.sh`
-
-Invoke the script using Bolt in order to install the agent on your local system:
+A basic installation script has been pre-staged in your home directory, here `~/install_pe_agent.sh` Invoke the script using Bolt in order to install the agent on your local system:
 
 ```[centos@XXXXlinN ~]$ sudo /usr/local/bin/bolt script run install_pe_agent.sh --nodes localhost```
 
