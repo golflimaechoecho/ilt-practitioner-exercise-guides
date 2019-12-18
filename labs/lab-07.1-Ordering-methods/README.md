@@ -77,7 +77,7 @@ notify { 'This should come after the entire MySQL class is enforced':
 
 1. Edit `manifests/mysql.pp`
 
-### Validate your code
+### Validate and commit your code
 
 1. Validate and test the new class:
 
