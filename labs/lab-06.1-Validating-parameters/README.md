@@ -38,7 +38,7 @@ file { '/etc/aliases':
     * Add the `String` datatype to the `$admin` parameter.
 1. Validate that the class works properly to start with
 
-  ```pdk validate```
+    ```pdk validate```
 
 1. Deploy your codebase.
 1. Classify your node group with the `system::aliases` class.
