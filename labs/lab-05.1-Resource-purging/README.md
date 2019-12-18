@@ -31,40 +31,9 @@ If you damage the hosts file and cannot reach the master, let the instructor kno
   | Operating systems  | RedHat              |
 
 * Press `Y` to generate the module in the current directory.
-* Change the current working directory to the module you created, then use the `pdk` command to create a new class called `hosts`.
+* Change the current working directory to the module you created.
 
   ```cd system```
-
-* At the command prompt, type
-
-  ```$ pdk new class hosts```
-
-* Edit `modules/hosts.pp` and add the content from the command
-
-  ```puppet resource host```
-
-### Deploy your new module
-
-To allow your module to be shared among your colleagues and Puppet masters, you need to push it to a `remote` git server. The following set of commands adds the URL to push to using the name `origin`.
-
-In the base of your system module, run these commands to create your own branch and push your code:
-
-1. Init your module: `git init`
-1. Add the origin: `git remote add origin git@gitlab.classroom.puppet.com:puppet/system.git`
-1. Checkout the branch: `git checkout -b studentN`
-1. Add the files: `git add --all`
-1. Create a commit: `git commit -m "Initial Commit"`
-1. Push the commit to the Git server: `git push origin studentN`
-
-### Validate your new module
-
-Verify your system module branch is now in Gitlab.
-
-1. In a browser, navigate to
-   `https://classXXXX-gitlab.classroom.puppet.com/puppet/system/tree/studentN`
-1. You should see the files you previously committed.
-
-  **_If prompted to sign-in, use the username `studentN` and the password `puppetlabs`._**
 
 ### Resource purging
 
@@ -76,22 +45,40 @@ Verify your system module branch is now in Gitlab.
 1. Add a `resources` resource to the class.
     * Set the `purge => true` attribute.
 1. Validate and test the new class.
-    * `pdk validate`
-    * `git add .`
-    * `git commit -m 'update hosts class'`
-    * `git push origin studentN`
-    * As we did with the review module, uncomment out these lines in the [control-repo]/Puppetfile:
-      
-      ```
-      mod 'system',
-        :git => 'git@gitlab.classroom.puppet.com:puppet/system.git',
-        :branch => 'studentN'
-      ```
 
-    * Commit and push your control repo changes, using the git add/commit/push sequence.
-    * Run `puppet agent -t` on your Linux node.
-    * No changes should be observed, aside from cosmetic changes such as `'::1'` to `'127.0.0.1'`
-1. Ensure you add `system::hosts` in PE classification for your studentN environment.
+    ```pdk validate```
+
+1. Commit your changes to the repo.
+    * Init your module: `git init`
+    * Add the origin: `git remote add origin git@gitlab.classroom.puppet.com:puppet/system.git`
+    * Checkout the branch: `git checkout -b studentN`
+    * Add the files: `git add --all`
+    * Create a commit: `git commit -m "Initial Commit"`
+    * Push the commit to the Git server: `git push origin studentN`
+1. Change directories to `[control-repo]`
+1. Edit the `Puppetfile` and uncomment out these lines.  
+
+    ```
+    mod 'system',
+      :git => 'git@gitlab.classroom.puppet.com:puppet/system.git',
+      :branch => 'studentN'
+    ```
+
+1. Commit and push your control repo changes, using the git add/commit/push sequence.
+
+### Log in to the Puppet Enterprise console and classify your new class
+
+1. Point your browser at https://classXXXX-master.classroom.puppet.com/
+
+1. Enter the credentials:
+    * **username:** *studentN*  
+    * **password:** *puppetlabs*
+
+1. In the left menu, under **CONFIGURE**, click **Classification**
+1. Open `All Environments` and your `studentN-env`
+1. Click on the `Configuration` tab
+1. Under `Classes` section, `Add new class` type in `system::hosts` and `Add class`
+1. Click **Commit 1 change** in the lower right corner.
 
 ### Observe purging
 1. Add a new entry in `/etc/hosts` named `removeme.puppetlabs.vm`
@@ -108,7 +95,7 @@ Verify your system module branch is now in Gitlab.
     1.2.3.4 removeme.puppetlabs.vm
     ```
 
-1. Run puppet again to purge your change: `puppet agent -t`
+1. Run puppet to purge your change: `puppet agent -t`
     **Expected output:**
 
     ```
