@@ -58,11 +58,11 @@ If you damage the hosts file and cannot reach the master, let the instructor kno
 1. Change directories to `[control-repo]`
     * Edit the `Puppetfile` and uncomment out these lines.  
 
-    ```
-    mod 'system',
-      :git => 'git@gitlab.classroom.puppet.com:puppet/system.git',
-      :branch => 'studentN'
-    ```
+      ```
+      mod 'system',
+        :git => 'git@gitlab.classroom.puppet.com:puppet/system.git',
+        :branch => 'studentN'
+      ```
 
 1. Commit and push your control repo changes, using the git add/commit/push sequence.
 
