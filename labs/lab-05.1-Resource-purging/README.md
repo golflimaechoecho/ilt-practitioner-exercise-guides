@@ -10,7 +10,7 @@ If you damage the hosts file and cannot reach the master, let the instructor kno
 
 **_Change the current working directory to the `environmentpath`_** 
 
-  ```cd $(puppet agent --configprint environmentpath)/modules```
+  ```cd $(puppet agent --configprint environmentpath)/production/modules```
 
 ### Create the `system` module
 
@@ -31,13 +31,13 @@ If you damage the hosts file and cannot reach the master, let the instructor kno
   | Operating systems  | RedHat              |
 
 * Press `Y` to generate the module in the current directory.
-* Change the current working directory to the module you created, then use the `pdk` command to create a new class called `system`.
+* Change the current working directory to the module you created, then use the `pdk` command to create a new class called `hosts`.
 
   ```cd system```
 
 * At the command prompt, type
 
-  ```$ pdk new module class hosts```
+  ```$ pdk new class hosts```
 
 * Edit `modules/hosts.pp` and add the content from the command
 
