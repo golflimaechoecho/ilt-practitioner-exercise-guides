@@ -56,7 +56,7 @@ If you damage the hosts file and cannot reach the master, let the instructor kno
     * Create a commit: `git commit -m "Initial Commit"`
     * Push the commit to the Git server: `git push origin studentN`
 1. Change directories to `[control-repo]`
-1. Edit the `Puppetfile` and uncomment out these lines.  
+    * Edit the `Puppetfile` and uncomment out these lines.  
 
     ```
     mod 'system',
