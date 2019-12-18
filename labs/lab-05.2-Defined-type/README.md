@@ -44,7 +44,7 @@ In this exercise, you will create a simple defined type that wraps a user type a
       The output should be similar to this
 
       ```
-      [root@training ~]# puppet agent -t
+      [root@1970nix0 ~]# puppet apply examples/managed_user.pp
       Info: Using configured environment 'production'
       Info: Retrieving pluginfacts
       Info: Retrieving plugin
@@ -55,17 +55,15 @@ In this exercise, you will create a simple defined type that wraps a user type a
       Notice: /Stage[main]/System::Managed_user[jose]/File[/home/jose]/group: group changed 'jose' to 'wheel'
       Notice: /Stage[main]/System::Managed_user[jose]/File[/home/jose]/mode: mode changed '0700' to '0755'
       Notice: /Stage[main]/System::Managed_user[jose]/File[/home/jose/.bashrc]/content:
-      --- /home/jose/.bashrc	2015-11-20 05:02:30.000000000 +0000
-      +++ /tmp/puppet-file20160525-62457-xtsnxo	2016-05-25 22:26:18.496743808 +0000
+      --- /home/jose/.bashrc    2015-11-20 05:02:30.000000000 +0000
+      +++ /tmp/puppet-file20160525-62457-xtsnxo 2016-05-25 22:26:18.496743808 +0000
       @@ -1,11 +1,10 @@
       -# .bashrc
       -
        # Source global definitions
        - if [ -f /etc/bashrc ]; then
        + [[ -f /etc/bashrc ]] && source /etc/bashrc
-  
       [...]
-
       Notice: /Stage[main]/System::Managed_user[jose]/File[/home/jose/.bashrc]/content: content changed '{md5}2f8222b4f275c4f18e69c34f66d2631b' to '{md5}19487d0c4a360482b8e74e0480875a85'
       Notice: /Stage[main]/System::Managed_user[jose]/File[/home/jose/.bashrc]/group: group changed 'jose' to 'wheel'
       Notice: Applied catalog in 13.52 seconds
