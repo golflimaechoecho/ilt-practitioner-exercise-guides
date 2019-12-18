@@ -30,7 +30,7 @@ In both delivery methods for this class, we'll set up a local development & test
     * `wget https://classXXXX-slides.classroom.puppet.com/file/_files/share/testing_apache.tar.gz` (Copy the link from your downloads page)
     * `tar -xvzf testing_apache.tar.gz`
     * `cd apache`
-1. Update the RSpec configuration files as required. Run `pdk convert`, and when it asks for OS support, choose `RedHat` and `Debian`, accept the changes, and review the files that were added or modified.
+1. Update the RSpec configuration files as required. Run `pdk convert --add-tests`, and when it asks for OS support, choose `RedHat` and `Debian`, accept the changes, and review the files that were added or modified.
 1. Note that this module has no external dependencies, so the only optional entry in your `.fixtures.yml ` file is  the `symlinks:` section which could be the module itself: `"apache": "#{source_dir}"`
    * Note this is not needed as PDK provides a helper for this, but the `.fixture.yml` file must exist.
 
