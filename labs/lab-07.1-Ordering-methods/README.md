@@ -83,7 +83,14 @@ notify { 'This should come after the entire MySQL class is enforced':
 
     ```$ pdk validate```
 
-1. Commit and push your module changes.
+1. Commit your changes to the repo.
+    * Init your module: `git init`
+    * Add the origin: `git remote add origin git@gitlab.classroom.puppet.com:puppet/ordering.git`
+    * Checkout the branch: `git checkout -b studentN`
+    * Add the files: `git add --all`
+    * Create a commit: `git commit -m "Initial Commit"`
+    * Push the commit to the Git server: `git push origin studentN`
+
 1. Uncomment the following entry in the `[control-repo]/Puppetfile`.
     **_Replace the “N” in these answers with your student number (for example, student8)._**
 
