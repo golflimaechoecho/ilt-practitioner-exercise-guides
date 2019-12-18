@@ -19,6 +19,10 @@ In this exercise, you will create a simple defined type that wraps a user type a
         * Print a message with `echo` or generate a funny message with `cowsay`.
         * If you need a starting point, try `cat ~/.bashrc` on your VM.
 1. Validate and test your type.
+    * Create the `examples` directory.
+
+      ```mkdir examples```
+
     * Edit `examples/managed_user.pp` and declare at least two `system::managed_user` resources.
     
       **Example declarations**
