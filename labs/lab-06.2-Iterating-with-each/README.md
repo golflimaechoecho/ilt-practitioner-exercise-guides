@@ -73,7 +73,7 @@ Let's use Puppet 6 iteration. What commonalities can you see in this code? What 
 
 ### Extra credit
 
-The [`pick()` function](https://forge.puppet.com/puppetlabs/stdlib#pick) can be used to select the first non-undefined value from a list of values. It could be useful when handling default values in your refactored class.
+The `pick() function` can be used to select the first non-undefined value from a list of values. It could be useful when handling default values in your refactored class.
 
 **Example:**
 
