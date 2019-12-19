@@ -95,7 +95,7 @@ system/
     └── aliases.epp
 ```
 
-### Example file: `system/manifests/aliases.pp`
+### Example file: `system/templates/aliases.pp`
 
 ```
 ...
@@ -108,6 +108,28 @@ decode:		root
 
 # Person who should get root's mail
 root:		<%= $admin %>
+```
+
+#### Example file: `system/manifests/aliases.pp`
+
+```ruby
+class aliases (
+    $admin = 'root',
+) {
+    # uses $admin to build the aliases file
+    file { '/etc/aliases':
+      ensure  => file,
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0644',
+      content => epp('aliases/aliases.epp', { admin => $admin }),
+    }
+
+    exec { '/usr/bin/newaliases':
+      refreshonly => true,
+      subscribe   => File['/etc/aliases'],
+    }
+}
 ```
 
 #### Example file: `system/examples/aliases.pp`

@@ -89,7 +89,7 @@ file_content/
     └── motd_header.epp
 ```
 
-#### Example file: `files/manifests/init.pp`
+#### Example file: `file_content/manifests/init.pp`
 
 ```ruby
 class file_content {
@@ -124,7 +124,7 @@ class file_content {
 }
 ```
 
-#### Example file: `files/examples/init.pp`
+#### Example file: `file_content/examples/init.pp`
 
 ```ruby
 include file_content
@@ -136,7 +136,7 @@ file_content::motd { 'maintainer notice':
 }
 ```
 
-#### Example file: `files/templates/motd_header.epp`
+#### Example file: `file_content/templates/motd_header.epp`
 
 ```ruby
 Welcome to <%= $fqdn %>
@@ -147,7 +147,7 @@ overwritten. Make configuration changes in the upstream repository.
 
 ### Extra Credit Solution
 
-#### Example file: `files/manifests/motd.pp`
+#### Example file: `file_content/manifests/motd.pp`
 
 ```ruby
 define file_content::motd (
