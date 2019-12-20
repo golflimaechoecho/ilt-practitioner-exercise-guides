@@ -102,35 +102,6 @@ Your job is to refactor this example to use composition rather than inheritance.
 1. Edit `manifests/wordpress.pp`
     * Declare the `webapp` class and pass parameters as needed.
 
-## Extra Credit
-
-While we're at it, you can earn some brownie points by extending the functionality of the module to support multiple Linux distributions using the `params` pattern. Calculate the default path of the `$docroot` in `params.pp` and inherit that class in `webapp` to make the variables available.
-
-1. Create a `webapp::params` class that calculates the default `$docroot` based on the `$facts['os']['family']` fact
-    ```pdk new class params```
-
-1. Edit `manifests/params.pp`
-1. Refactor `webapp` to inherit from the `webapp::params` class and use it to calculate appropriate platform defaults
-   * Edit `manifests/init.pp`
-
-#### Example `params.pp`
-
-```ruby
-class webapp::params {
-  case $facts['os']['family'] {
-    'RedHat': {
-       $docroot = '/var/www/html'
-    }
-    'Debian': {
-       $docroot = '/var/www'
-    }
-    default: {
-      fail("Module ${module_name} is not supported on ${facts['os']['family']}")
-    }
-  }
-}
-```
-
 ### Test your module
 
 1. Validate and test your classes.
@@ -165,6 +136,18 @@ class webapp::params {
     notice: Finished catalog run in 29.09 seconds
     ```
 
+## Extra Credit
+
+While we're at it, you can earn some brownie points by extending the functionality of the module to support multiple Linux distributions using the `params` pattern. Calculate the default path of the `$docroot` in `params.pp` and inherit that class in `webapp` to make the variables available.
+
+1. Create a `webapp::params` class that calculates the default `$docroot` based on the `$facts['os']['family']` fact
+    
+    ```pdk new class params```
+
+1. Edit `manifests/params.pp`
+1. Refactor `webapp` to inherit from the `webapp::params` class and use it to calculate appropriate platform defaults
+   * Edit `manifests/init.pp`
+
 # Solution
 
 ### Your module structure should resemble
@@ -197,8 +180,38 @@ class webapp::wordpress {
 
 ```ruby
 class webapp (
-  $docroot,
-  $app_name = 'webapp'
+  String $docroot = '/var/www/html',
+  String $app_name = 'webapp'
+) {
+  include mysql::server
+  class { 'mysql::bindings':
+    php_enable => true,
+  }
+
+  include apache
+  include apache::mod::php
+  apache::vhost { $facts['fqdn']:
+    priority   => '10',
+    vhost_name => $facts['fqdn'],
+    port       => '80',
+    docroot    =>  $docroot,
+  }
+
+  @@haproxy::balancermember { $fqdn:
+    listening_service => $app_name,
+    ports             => '80',
+  }
+}
+```
+
+### Extra Credit
+
+#### Example file: `webapp/manifests/init.pp`
+
+```ruby
+class webapp (
+  String $docroot,
+  String $app_name = 'webapp'
 ) inherits webapp::params {
   include mysql::server
   class { 'mysql::bindings':

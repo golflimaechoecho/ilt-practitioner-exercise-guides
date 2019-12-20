@@ -29,17 +29,19 @@ You have already created a kerberos class, you will be modifying it now.
 
 1. Add a new `augeas` resource type to your class.
 
-    ```pdk new class augeas```
+    ```pdk new class kerberos```
 
     * Configure the `context` attribute to the path you discovered for `default_realm`
     * Set the `changes` attribute to `set` the value of `default_realm` to `PUPPETLABS.VM`
 1. Validate your new class:
 
     ```pdk validate```
+
 1. Commit your code
 1. In the PE console, classify your node with 'kerberos'.
 1. Run `puppet agent -t`
 1. Validate your change using the `default_realm` custom fact or by inspection.
+    
     ```
     facter -p default_realm
     grep default_realm /etc/krb5.conf
