@@ -34,19 +34,19 @@ Then customize root's user account on your agent by adding classification rules 
 
 The first step is to create a new node group that will have the environment group checkbox selected. This group will assign your nodes to run in your environment (studentN), which corresponds to your branch in the control-repo.
 
-* Click on Classification in the left menu.
-* Click **Add group...** at the top.
-* Enter the following (Where N is your student number):
-  * Parent name: `All Environments`
-  * Group name: `studentN-env`
-  * Environment: `studentN`
-  * Environment Group: `checked`
-  * Description: `This group sets the environment for studentN`
-  * Click **Add**
-* Now that the group has been created, expand the `All Environments` group (click the **+** sign to the left of the name) and click on your new **studentN-env** group
-* On the `Rules` tab, navigate to the section that says `Pin specific nodes to the group`
-* Click on **Node name** and select only your Linux machine from the list
-* Finally, click on **Commit X changes** in the lower right hand corner
+1. Click on Classification in the left menu.
+1. Click **Add group...** at the top.
+1. Enter the following (Where N is your student number):
+    * Parent name: `All Environments`
+    * Group name: `studentN-env`
+    * Environment: `studentN`
+    * Environment Group: `checked`
+    * Description: `This group sets the environment for studentN`
+    * Click **Add**
+1. Now that the group has been created, expand the `All Environments` group (click the **+** sign to the left of the name) and click on your new **studentN-env** group
+1. On the `Rules` tab, navigate to the section that says `Pin specific nodes to the group`
+1. Click on **Node name** and select only your Linux machine from the list
+1. Finally, click on **Commit X changes** in the lower right hand corner
 
 ### Classify your node group with customizations
 
@@ -59,13 +59,13 @@ mod 'stahnma/epel'
 
 #### Commit & push your [control-repo] Puppetfile changes
 
-These commands are the same on windows and linux:
+1. These commands are the same on windows and linux:
 
-  ```git add Puppetfile```
+    ```git add Puppetfile```
 
-  ```git commit -m 'Add userprefs module'```
+    ```git commit -m 'Add userprefs module'```
 
-  ```git push origin studentN```
+    ```git push origin studentN```
 
 #### Classify the userprefs module
 

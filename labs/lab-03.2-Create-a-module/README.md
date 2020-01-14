@@ -37,15 +37,15 @@ assistance from the instructor as needed.
 
 1. You will see several questions requiring an answer. Enter these answers:
 
-  **_Replace the N in studentN with your student number (for example, `student8`)._**
+    **_Replace the N in studentN with your student number (for example, `student8`)._**
 
-  | Question           | Answer              |
-  | ------------------ |:-------------------:|
-  | Module Name        | `review`            |
-  | Forge Name         | `studentN`          |
-  | Credit author      | `Student N`         |
-  | License            | `Apache-2.0`        |
-  | Operating reviews  | RedHat              |
+    | Question           | Answer              |
+    | ------------------ |:-------------------:|
+    | Module Name        | `review`            |
+    | Forge Name         | `studentN`          |
+    | Credit author      | `Student N`         |
+    | License            | `Apache-2.0`        |
+    | Operating reviews  | RedHat              |
 
 ### Update the class
 
