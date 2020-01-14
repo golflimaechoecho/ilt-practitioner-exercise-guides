@@ -2,7 +2,7 @@
 
 Now that we've had some exposure to the `.epp` template format, let's finish the `review::motd` class. If you've been using `.epp` for a while, this will be familiar. If not, you might struggle a bit. Feel free to ask any questions needed or run through the docs page for a brush-up.
 
-https://docs.puppet.com/puppet/latest/lang_template_epp.html
+<https://docs.puppet.com/puppet/latest/lang_template_epp.html>
 
 The exercise asks you to add some dynamic content to `/etc/motd` with an `.epp` template. For simplicity, we'll just use a few facts. If you'd rather use your own variables, remember that with `.epp`, you must pass them in with the variables hash.
 
@@ -15,18 +15,24 @@ The exercise asks you to add some dynamic content to `/etc/motd` with an `.epp` 
 1. Edit the `[modulepath]/review/templates/motd.epp` template in the `review` module.
    * Add a brief welcome message, using the `fqdn` of the host and any other facts you'd like.
 1. Deploy your codebase:
-   1. `git init`
-   1. `git remote add origin git@gitlab.classroom.puppet.com:puppet/review.git`
-   1. `git checkout -b studentN`
-   1. `git add .`
-   1. `git commit -m 'initial commit'`
-   1. `git push origin studentN`
+  
+    ```git init```
+
+    ```git remote add origin git@gitlab.classroom.puppet.com:puppet/review.git```
+
+    ```git checkout -b studentN```
+
+    ```git add .```
+
+    ```git commit -m 'initial commit'```
+
+    ```git push origin studentN```
 
 ### Deploy and Classify
 
 Go to your [control-repo] and edit the Puppetfile by uncommenting the following lines in `[control-repo]/Puppetfile`. When you're done editing, push it to your branch.
 
-```shell
+```plaintext
 mod 'review',
   :git    => 'git@gitlab.classroom.puppet.com:puppet/review.git',
   :branch => 'studentN'
@@ -36,24 +42,32 @@ mod 'review',
 
 #### Commit and push your [control-repo] Puppetfile changes
 
-1. `git add --all`
-1. `git commit -m "Add Review Module"`
-1. `git push origin studentN`
+1. Deploy your codebase.
+
+    ```git add --all```
+
+    ```git commit -m "Add Review Module"```
+
+    ```git push origin studentN```
+
 1. Add classification
-    1. Navigate to the **CONFIGURE** -> **Classification** tab.
-    1. Find and select your Node Group from the list.
-        * `studentN-env environment group`
-    1. Add the `review` class and enter a username.
-    1. Log into your agent node and enforce the configuration.
-        * `puppet agent -t`
+    * Navigate to the **CONFIGURE** -> **Classification** tab.
+    * Find and select your Node Group from the list.
+
+      ```studentN-env environment group```
+
+    * Add the `review` class and enter a username.
+    * Log into your agent node and enforce the configuration.
+
+      ```puppet agent -t```
 
 **_If your new classes don't show in the PE Console as expected, try validating their syntax using `pdk validate`._**
 
-# Solution
+## Solution
 
 ### Your module structure should resemble
 
-```shell
+```plaintext
 [root@training modules]# tree review/
 review/
 ├── examples

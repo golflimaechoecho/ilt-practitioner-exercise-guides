@@ -8,32 +8,32 @@ If you damage the hosts file and cannot reach the master, let the instructor kno
 
 **_Tip: You can redirect the output of a command to a file, if it'sconvenient. For example, `puppet resource host > hosts.pp`._**
 
-**_Change the current working directory to the `environmentpath`_** 
+**_Change the current working directory to the `environmentpath`_**
 
   ```cd $(puppet agent --configprint environmentpath)/production/modules```
 
-### Create the `system` module
+## Create the `system` module
 
-* Create a new PDK module called `system`
+1. Create a new PDK module called `system`
 
-  ```$ pdk new module```
+    ```$ pdk new module```
 
-  * You will see several questions requiring an answer. Enter these answers:
+    You will see several questions requiring an answer. Enter these answers:
 
-  **_Replace the “N” in these answers with your student number (for example, `student8`)._**
+    **_Replace the “N” in these answers with your student number (for example, `student8`)._**
 
-  | Question           | Answer              |
-  | ------------------ |:-------------------:|
-  | Module Name        | `system`            |
-  | Forge Name         | `studentN`          |
-  | Credit author      | `Student N`         |
-  | License            | `Apache-2.0`        |
-  | Operating systems  | RedHat              |
+    | Question           | Answer              |
+    | ------------------ |:-------------------:|
+    | Module Name        | `system`            |
+    | Forge Name         | `studentN`          |
+    | Credit author      | `Student N`         |
+    | License            | `Apache-2.0`        |
+    | Operating systems  | RedHat              |
 
-* Press `Y` to generate the module in the current directory.
-* Change the current working directory to the module you created.
+1. Press `Y` to generate the module in the current directory.
+1. Change the current working directory to the module you created.
 
-  ```cd system```
+    ```cd system```
 
 ### Resource purging
 
@@ -58,7 +58,7 @@ If you damage the hosts file and cannot reach the master, let the instructor kno
 1. Change directories to `[control-repo]`
     * Edit the `Puppetfile` and uncomment out these lines.  
 
-      ```
+      ```plaintext
       mod 'system',
         :git => 'git@gitlab.classroom.puppet.com:puppet/system.git',
         :branch => 'studentN'
@@ -68,7 +68,7 @@ If you damage the hosts file and cannot reach the master, let the instructor kno
 
 ### Log in to the Puppet Enterprise console and classify your new class
 
-1. Point your browser at https://classXXXX-master.classroom.puppet.com/
+1. Point your browser at <https://classXXXX-master.classroom.puppet.com/>
 
 1. Enter the credentials:
     * **username:** *studentN*  
@@ -81,12 +81,13 @@ If you damage the hosts file and cannot reach the master, let the instructor kno
 1. Click **Commit 1 change** in the lower right corner.
 
 ### Observe purging
+
 1. Add a new entry in `/etc/hosts` named `removeme.puppetlabs.vm`
     * Add `1.2.3.4   removeme.puppetlabs.vm`
-    
+
     **Sample `/etc/hosts` file:**
 
-    ```
+    ```plaintext
     127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
     ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 
@@ -98,7 +99,7 @@ If you damage the hosts file and cannot reach the master, let the instructor kno
 1. Run puppet to purge your change: `puppet agent -t`
     **Expected output:**
 
-    ```
+    ```plaintext
     [root@1905nix0 control-repo]# puppet agent -t
     ...
     Info: Caching catalog for 1905nix0.classroom.puppet.com
@@ -108,7 +109,7 @@ If you damage the hosts file and cannot reach the master, let the instructor kno
     Notice: Applied catalog in 0.29 seconds
     ```
 
-# Solution
+## Solution
 
 ### Your module structure should resemble
 

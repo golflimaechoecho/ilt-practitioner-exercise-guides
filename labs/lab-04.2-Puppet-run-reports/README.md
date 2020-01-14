@@ -9,7 +9,7 @@ In this lab, you'll look at your cached report and configure your environment's 
 ## Steps
 
 1. See what changes were made in the last Puppet run
-    
+
     ```grep -B 25 'changed: true' $(puppet agent --configprint lastrunreport)```
 
     Your output should look similar to this...
@@ -55,41 +55,43 @@ In this lab, you'll look at your cached report and configure your environment's 
 
 1. Run the agent and check its configuration version: `puppet agent -t`
 
-  Your output should look similar to this...
+    Your output should look similar to this...
 
-  ```
-  [root@training ~]# puppet agent -t
-  Notice: Local environment: 'production' doesn't match server specified node environment 'training', switching agent to 'training'.
-  Info: Retrieving pluginfacts
-  Info: Retrieving plugin
-  Info: Loading facts
-  Info: Caching catalog for training.puppetlabs.vm
-  Info: Applying configuration version '1489778215'
-  ```
+    ```plaintext
+    [root@training ~]# puppet agent -t
+    Notice: Local environment: 'production' doesn't match server specified node environment 'training', switching agent to 'training'.
+    Info: Retrieving pluginfacts
+    Info: Retrieving plugin
+    Info: Loading facts
+    Info: Caching catalog for training.puppetlabs.vm
+    Info: Applying configuration version '1489778215'
+    ```
 
 ### Configure a `config_version` for your environment
+
 1. Validate the `config_version` of your environment by reviewing the `environment.conf` file: `cat ~/control-repo/environment.conf`
 
-  **Example file: `[environment]/environment.conf`**
+    **Example file: `[environment]/environment.conf`**
 
-  ```shell
-  modulepath = site:modules:$basemodulepath
-  config_version = 'scripts/config_version.sh $environmentpath $environment'
-  ```
+    ```plaintext
+    modulepath = site:modules:$basemodulepath
+    config_version = 'scripts/config_version.sh $environmentpath $environment'
+    ```
 
-2. Run the agent and check its new configuration version: `puppet agent -t`
+1. Run the agent and check its new configuration version: `puppet agent -t`
   Your output should look similar to this...
 
-  ```
-  [root@training ~]# puppet agent -t
-   Notice: Local environment: 'production' doesn't match server specified node environment 'training', switching agent to 'training'.
-  Info: Retrieving pluginfacts
-  Info: Retrieving plugin
-   Info: Loading facts
-  Info: Caching catalog for training.puppetlabs.vm
-  Info: Applying configuration version '`#{compiling_master}-#{environment}-#{commit_id}`'
-  ```
-3. Compare the configuration version to that of your development repository.
+    ```plaintext
+    [root@training ~]# puppet agent -t
+     Notice: Local environment: 'production' doesn't match server specified node environment 'training', switching agent to 'training'.
+    Info: Retrieving pluginfacts
+    Info: Retrieving plugin
+     Info: Loading facts
+    Info: Caching catalog for training.puppetlabs.vm
+    Info: Applying configuration version '`#{compiling_master}-#{environment}-#{commit_id}`'
+    ```
+
+1. Compare the configuration version to that of your development repository.
     * Linux: `git rev-parse --short HEAD`
     * Windows: see the most recent commit listed for your branch of the control repository.
 

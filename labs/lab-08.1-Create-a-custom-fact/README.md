@@ -4,13 +4,12 @@ Take a look at your `/etc/krb5.conf` file. This configures the Kerberos network 
 
 Your task is to write a `default_realm` fact to expose this information as a  global variable.  Using the command line to parse this value might look something like
 
-```
-    $ awk '/default_realm/{print $NF}' /etc/krb5.conf
-```
+  ```awk '/default_realm/{print $NF}' /etc/krb5.conf```
 
-## Steps:
+## Steps
 
 ### Develop your fact
+
 1. Change directory to your `[modulepath]`  
 
     ```$ cd $(puppet agent --configprint environmentpath)/production/modules```
@@ -30,7 +29,6 @@ Your task is to write a `default_realm` fact to expose this information as a  gl
     | Credit author      | `Student N`         |
     | License            | `Apache-2.0`        |
     | Operating systems  | RedHat              |
-
 
 1. Create your `default_realm.rb` custom fact.
     * Edit `kerberos/lib/facter/default_realm.rb`
@@ -57,11 +55,11 @@ Your task is to write a `default_realm` fact to expose this information as a  gl
 
 **_A full fledged development workstation would likely have Puppet available locally, meaning that you could validate code before deploying and syncing._**
 
-# Solution
+## Solution
 
 ### Your module structure should resemble
 
-```
+```plaintext
 [root@training modules]# tree kerberos/
 kerberos/
 └── lib

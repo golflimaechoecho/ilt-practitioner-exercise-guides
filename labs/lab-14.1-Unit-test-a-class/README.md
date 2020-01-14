@@ -16,7 +16,7 @@ In both delivery methods for this class, we'll set up a local development & test
 
 **_The URL to download the `testing_apache.tar.gz` package can be found under the *Downloads* menu in the presentation. Simply right-click and copy the URL._**
 
-## Steps:
+## Steps
 
 ### Set up the development environment
 
@@ -31,59 +31,58 @@ In both delivery methods for this class, we'll set up a local development & test
     * `tar -xvzf testing_apache.tar.gz`
     * `cd apache`
 1. Update the RSpec configuration files as required. Run `pdk convert --add-tests`, and when it asks for OS support, choose `RedHat` and `Debian`, accept the changes, and review the files that were added or modified.
-1. Note that this module has no external dependencies, so the only optional entry in your `.fixtures.yml ` file is  the `symlinks:` section which could be the module itself: `"apache": "#{source_dir}"`
+1. Note that this module has no external dependencies, so the only optional entry in your `.fixtures.yml` file is  the `symlinks:` section which could be the module itself: `"apache": "#{source_dir}"`
    * Note this is not needed as PDK provides a helper for this, but the `.fixture.yml` file must exist.
 
 ### Develop unit tests
 
 1. First we need to create the spec file for the apache class `spec/classes/apache_spec.rb`
 1. We are going to use `git` locally, version control is the best tool for this separation of concerns, but take care.
-   1. From the root of the `apache` folder, run `git init`. If you're using VCS, use the terminal to run these commands.
-   1. Add all files: `git init`, git add --all, and then `git commit -am 'init'`
-   1. The `apache` module is now under version control.
-   1. Make a copy to work with: `git checkout -b rspec`
-   1. Now let's use version control and PDK to create new tests in a controlled manner;
-   1. Run `rm manifests/*` to remove the class manifests so we can recreate them with the PDK.
-   1. Recreate them with: `pdk new class apache` and `pdk new class params`. Note this creates our default spec tests too.
-   1. Add just the spec files to git: `git add spec/*` followed by `git commit -m'create specs'`
-   1. OK, now let's add these to our original code: `git checkout master`. 
-   1. Now to replace the manifests we deleted: `git reset --hard HEAD`
-   1. Issue the `git merge rspec` command and you should see just the spec files added to the master branch.
-   1. Validate with: `pdk test unit --list`. You should see the list of tests you created.
+   * From the root of the `apache` folder, run `git init`. If you're using VCS, use the terminal to run these commands.
+   * Add all files: `git init`, git add --all, and then `git commit -am 'init'`
+   * The `apache` module is now under version control.
+   * Make a copy to work with: `git checkout -b rspec`
+   * Now let's use version control and PDK to create new tests in a controlled manner;
+   * Run `rm manifests/*` to remove the class manifests so we can recreate them with the PDK.
+   * Recreate them with: `pdk new class apache` and `pdk new class params`. Note this creates our default spec tests too.
+   * Add just the spec files to git: `git add spec/*` followed by `git commit -m'create specs'`
+   * OK, now let's add these to our original code: `git checkout master`.
+   * Now to replace the manifests we deleted: `git reset --hard HEAD`
+   * Issue the `git merge rspec` command and you should see just the spec files added to the master branch.
+   * Validate with: `pdk test unit --list`. You should see the list of tests you created.
 
-        ```
+        ```plaintext
         $pdk test unit --list
         Unit Test Files:
         ./spec/classes/apache_spec.rb
         ./spec/classes/params_spec.rb
         ```
 
-You can even run `pdk test unit`. It will fail, but that's OK for now.
+      You can even run `pdk test unit`. It will fail, but that's OK for now.
 
-```
-$pdk test unit
-pdk (INFO): Using Ruby 2.5.1
-pdk (INFO): Using Puppet 6.0.2
-[✔] Preparing to run the unit tests.
-[✖] Running unit tests.
-Evaluated 14 tests in 16.385885 seconds: 6 failures, 0 pending.
-```
+      ```plaintext
+      $pdk test unit
+      pdk (INFO): Using Ruby 2.5.1
+      pdk (INFO): Using Puppet 6.0.2
+      [✔] Preparing to run the unit tests.
+      [✖] Running unit tests.
+      Evaluated 14 tests in 16.385885 seconds: 6 failures, 0 pending.
+      ```
 
-The presented output is truncated, discuss the errors with the presenter.
-
+      **_The presented output is truncated, discuss the errors with the presenter._**
 
 1. First let us kill some noise in the tests by removing some of the nodes under test specified in our metadata.
-   1. Edit the `metadata.json` and remove the extra operating systems from the `operatingsystem_support` stanza. These control how many operating systems are tested, so removing them will lower the number of tests.
+   * Edit the `metadata.json` and remove the extra operating systems from the `operatingsystem_support` stanza. These control how many operating systems are tested, so removing them will lower the number of tests.
 
-    ```
+    ```json
     "operatingsystem_support": [
-      { 
+      {
         "operatingsystem": "RedHat",
           "operatingsystemrelease": [
             "7"
           ]
         },
-        { 
+        {
           "operatingsystem": "Debian",
           "operatingsystemrelease": [
             "8"
@@ -93,56 +92,56 @@ The presented output is truncated, discuss the errors with the presenter.
     ],
     ```
 
-Make sure to validate this, since JSON can be tricky. `pdk validate metadata`
+    Make sure to validate this, since JSON can be tricky. `pdk validate metadata`
 
-```
-pdk validate metadata
-pdk (INFO): Using Ruby 2.5.1
-pdk (INFO): Using Puppet 6.0.2
-[✔] Checking metadata syntax (metadata.json tasks/*.json).
-[✔] Checking module metadata style (metadata.json).
-```
+    ```plaintext
+    pdk validate metadata
+    pdk (INFO): Using Ruby 2.5.1
+    pdk (INFO): Using Puppet 6.0.2
+    [✔] Checking metadata syntax (metadata.json tasks/*.json).
+    [✔] Checking module metadata style (metadata.json).
+    ```
 
-Rerun with `pdk test unit`. We are testing a small subject from the default rspec.
+    Rerun with `pdk test unit`. We are testing a small subject from the default rspec.
 
-```
-pdk (INFO): Using Ruby 2.5.1
-pdk (INFO): Using Puppet 6.0.2
-[✔] Preparing to run the unit tests.
-[✔] Running unit tests.
-    Evaluated 4 tests in 12.777402 seconds: 0 failures, 0 pending.
-```
+    ```plaintext
+    pdk (INFO): Using Ruby 2.5.1
+    pdk (INFO): Using Puppet 6.0.2
+    [✔] Preparing to run the unit tests.
+    [✔] Running unit tests.
+        Evaluated 4 tests in 12.777402 seconds: 0 failures, 0 pending.
+    ```
 
-```ruby
-cat spec/classes/apache_spec.rb
+    ```ruby
+    cat spec/classes/apache_spec.rb
 
-require 'spec_helper'
+    require 'spec_helper'
 
-describe 'apache' do
-  on_supported_os.each do |os, os_facts|
-    context "on #{os}" do
-    let(:facts) { os_facts }
-    it { is_expected.to compile }
+    describe 'apache' do
+      on_supported_os.each do |os, os_facts|
+        context "on #{os}" do
+        let(:facts) { os_facts }
+        it { is_expected.to compile }
+        end
+      end
     end
-  end
-end
-```
+    ```
 
 1. So lets expand that a little bit shall we.
-2. First, test that the class itself exists, (https://rspec-puppet.com/documentation/classes/)
-   1. add `it { is_expected.to contain_class('apache') }` within the context statement.
-   2. run the PDK test on just the apache class: `pdk test unit --tests ./spec/classes/apache_spec.rb`
-   3. iterate over this process for each resource (https://rspec-puppet.com/documentation/classes/#test-a-resource)
-   4. try adding `it { is_expected.to contain_service('apache').with('ensure' => 'present', 'enable' => true) }` and run `pdk test unit` It fails, with a clear error message. Correct it and add a package.
-   5. The package name is different for Debian and RedHat. Review https://github.com/puppetlabs/puppetlabs-apache/blob/master/spec/classes/apache_spec.rb#L4, which is the RSpec for the Apache module supported by Puppet.
+1. First, test that the class itself exists, (https://rspec-puppet.com/documentation/classes/)
+   * add `it { is_expected.to contain_class('apache') }` within the context statement.
+   * run the PDK test on just the apache class: `pdk test unit --tests ./spec/classes/apache_spec.rb`
+   * iterate over this process for each resource (<https://rspec-puppet.com/documentation/classes/#test-a-resource)>
+   * try adding `it { is_expected.to contain_service('apache').with('ensure' => 'present', 'enable' => true) }` and run `pdk test unit` It fails, with a clear error message. Correct it and add a package.
+   * The package name is different for Debian and RedHat. Review <https://github.com/puppetlabs/puppetlabs-apache/blob/master/spec/classes/apache_spec.rb#L4,> which is the RSpec for the Apache module supported by Puppet.
 
-# Solution
+## Solution
 
 ### Your module structure should resemble
 
 **_There will be additional files due to those generated by the PDK._**
 
-```
+```plaintext
 [root@training development]# tree -a apache
 apache
 ├── examples

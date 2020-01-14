@@ -49,10 +49,11 @@ file { '/etc/aliases':
 ### Test the parameter validation
 
 Ensure the class fails appropriately
-* Edit `examples/aliases_array.pp`: declare with the `admin` parameter set to `["an", "array", "of", "names"]`
-* Edit `examples/aliases_hash.pp`: declare with the `admin` parameter set to `{"first" => "jim", "second" => "bo"}`
-* Edit `examples/aliases_number.pp`: declare with the `admin` parameter set to `17`
-* `puppet apply` each example manifest
+
+1. Edit `examples/aliases_array.pp`: declare with the `admin` parameter set to `["an", "array", "of", "names"]`
+1. Edit `examples/aliases_hash.pp`: declare with the `admin` parameter set to `{"first" => "jim", "second" => "bo"}`
+1. Edit `examples/aliases_number.pp`: declare with the `admin` parameter set to `17`
+1. `puppet apply` each example manifest
 
 **_When typing data structures into the PE Node Classifier, the type of quote used is significant. For example, when typing in an array, quotes like `['an', 'array', 'of', 'strings']` would fail to parse correctly. Ensure that you use_** **only double quotes** **_when typing in the data structures shown._**
 
@@ -60,7 +61,7 @@ Ensure the class fails appropriately
 
 **_Notice that in error output, Puppet will often display internal data type names, such as `Tuple` or `Struct` instead of the more human-friendly names like `Array` or `Hash`._**
 
-  ```
+  ```plaintext
   [root@training modules]# puppet apply examples/aliases.pp
   Notice: Compiled catalog for master.puppetlabs.vm in environment production in 0.34 seconds
   Notice: /Stage[main]/System/Aliases/File[/etc/aliases]/ensure: created
@@ -77,11 +78,11 @@ Ensure the class fails appropriately
 
 If you have extra time, you might try your hand at making a `Pattern` datatype that will allow either a username or an email address for the `$admin` parameter.
 
-# Solution
+## Solution
 
 ### Your module structure should resemble
 
-```
+```plaintext
 [root@training modules]# tree system/
 system/
 ├── examples
@@ -97,17 +98,17 @@ system/
 
 ### Example file: `system/templates/aliases.pp`
 
-```
+```plaintext
 ...
-marketing:	postmaster
-sales:		postmaster
-support:	postmaster
+marketing:    postmaster
+sales:    postmaster
+support:  postmaster
 
 # trap decode to catch security attacks
-decode:		root
+decode:    root
 
 # Person who should get root's mail
-root:		<%= $admin %>
+root:    <%= $admin %>
 ```
 
 #### Example file: `system/manifests/aliases.pp`

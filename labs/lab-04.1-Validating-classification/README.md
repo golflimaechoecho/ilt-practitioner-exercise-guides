@@ -19,41 +19,42 @@ In this lab, we'll look at some debugging steps that can help you validate wheth
 
 1. Check the catalog to ensure that the parameters you specified are set.
 
-  ```
-  $ cd $(puppet agent --configprint client_datadir)/catalog
-  $ jq '.resources[] | select(.type == "Class" and .title == "Userprefs") .parameters' $(hostname).json
-  ```
-  Your output should look similar to this...
+    ```plaintext
+    $ cd $(puppet agent --configprint client_datadir)/catalog
+    $ jq '.resources[] | select(.type == "Class" and .title == "Userprefs") .parameters' $(hostname).json
+    ```
 
-  ```json
-  {
-    "editor": "vim",
-    "shell": "bash",
-    "gitprompt": true
-  }
-  ```
+    Your output should look similar to this...
 
-1. Inspect the complete `Class` object to see what other interesting data you could use. Press the `up` arrow and edit the command line to remove `.parameters`.
-
-  Your output should look similar to this...
-
-  ```json
-  {
-    "type": "Class",
-    "title": "Userprefs",
-    "tags": [
-      "class",
-      "userprefs",
-      "node",
-      "master.puppetlabs.vm"
-    ],
-    "exported": false,
-    "parameters": {
+    ```json
+    {
       "editor": "vim",
       "shell": "bash",
       "gitprompt": true
     }
-  }
-  ```
+    ```
+
+1. Inspect the complete `Class` object to see what other interesting data you could use. Press the `up` arrow and edit the command line to remove `.parameters`.
+
+    Your output should look similar to this...
+
+    ```json
+    {
+      "type": "Class",
+      "title": "Userprefs",
+      "tags": [
+        "class",
+        "userprefs",
+        "node",
+        "master.puppetlabs.vm"
+      ],
+      "exported": false,
+      "parameters": {
+        "editor": "vim",
+        "shell": "bash",
+        "gitprompt": true
+      }
+    }
+    ```
 
 |  [Previous Lab](../lab-03.3-Manage-a-file)  |  [Next Lab](../lab-04.2-Puppet-run-reports)  |

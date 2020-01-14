@@ -1,8 +1,6 @@
 # ![alt text](_images/Puppet-Logo-Amber-Black.png)
 
-# Puppet Practitioner
-
-## Exercise Guide
+## Puppet Practitioner Exercise Guide
 
 This repository contains step by step instructions for the Puppet Practitioner exercise and lab guide.
 

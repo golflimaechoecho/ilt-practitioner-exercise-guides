@@ -10,7 +10,7 @@ Hiera is a tool that runs on the Puppet master, but it is useful to have a repre
 
 As the final step to this lab, you will commit your datasources to your repository,  then push them to the Puppet master. Test that the data retrieval functions still  work when running the Puppet agent.
 
-## Steps:
+## Steps
 
 ### Configure Hiera with a common datasource
 
@@ -55,10 +55,9 @@ As the final step to this lab, you will commit your datasources to your reposito
     * `puppet agent -t`
     * You should observe the same message output.
 
-# Solution
+## Solution
 
-#### Example file:
-`~/control-repo/hiera.yaml`
+### Example file `~/control-repo/hiera.yaml`
 
 ```yaml
 ---
@@ -89,32 +88,28 @@ hierarchy:
     - common
 ```
 
-#### Example file:
-`~/control-repo/hieradata/common.yaml`
+### Example file `~/control-repo/hieradata/common.yaml`
 
 ```yaml
 ---
 message: 'value from common'
 ```
 
-#### Example file:
-`~/control-repo/hieradata/production.yaml`
+### Example file: `~/control-repo/hieradata/production.yaml`
 
 ```yaml
 ---
 message: 'value from production'
 ```
 
-#### Example file:
-`~/control-repo/hieradata/`<span class="em">yourhost</span>
+### Example file: `~/control-repo/hieradata/`<span class="em">yourhost</span>
 
 ```yaml
 ---
 message: 'value from <span class="em">yourhost</span>'
 ```
 
-#### Example file:
-`[environment]/manifests/site.pp`
+### Example file: `[environment]/manifests/site.pp`
 
 ```ruby
 node default {

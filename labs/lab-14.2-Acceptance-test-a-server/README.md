@@ -12,7 +12,7 @@ In this lab you will create serverspec tests for the Apache module from the prev
 
 **_We'll continue using our development environment we set up in the last lab._**
 
-## Steps:
+## Steps
 
 **_Best practices are to not pollute Puppet's vendored Ruby path with extra gems unless they're required to directly operate with the Puppet libraries. In this case, Serverspec does not need Puppet libraries, so we'll install to system Ruby._**
 
@@ -38,9 +38,9 @@ In this lab you will create serverspec tests for the Apache module from the prev
     * `rake spec`
 1. Update your class and/or tests until tests pass.
 
-#### Expected Output:
+#### Expected Output
 
-```
+```plaintext
 [root@training serverspec]# rake spec
 /usr/bin/ruby -S rspec spec/localhost/sample_spec.rb
 ......
@@ -49,11 +49,11 @@ Finished in 0.07377 seconds
 6 examples, 0 failures
 ```
 
-# Solution
+## Solution
 
 ### Your module structure should resemble
 
-```
+```plaintext
 [root@training development]# tree -a apache
 apache/
 ├── examples

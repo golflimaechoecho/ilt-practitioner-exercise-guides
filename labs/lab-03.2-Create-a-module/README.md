@@ -23,17 +23,17 @@ For the rest of this course, we will refer to the `/etc/puppetlabs/code/environm
 We haven't explained to you how to do most of these tasks, so please request
 assistance from the instructor as needed.
 
-# Steps
+## Steps
 
-### Create the review module using PDK.
+### Create the review module using PDK
 
 1. Change directory to your `[modulepath]` by running
-  
-  ```$ cd $(puppet agent --configprint environmentpath)/production/modules```
+
+    ```$ cd $(puppet agent --configprint environmentpath)/production/modules```
 
 1. Run this command:
 
-  ```$ pdk new module```
+    ```$ pdk new module```
 
 1. You will see several questions requiring an answer. Enter these answers:
 
@@ -50,9 +50,13 @@ assistance from the instructor as needed.
 ### Update the class
 
 1. Navigate to your `review` directory.
-  ```cd review```
+
+    ```cd review```
+
 1. Create the class.
-  ```pdk new class review```
+
+    ```pdk new class review```
+
 1. Edit `manifests/init.pp`
     * Add a single parameter, `$user`, defaulting to `review`
 1. The class should manage:
@@ -64,7 +68,7 @@ assistance from the instructor as needed.
 
 1. Create a class named `review::motd` in the proper location.
 
-  ```pdk new class motd```
+    ```pdk new class motd```
 
 1. Leave the body of the class blank. We'll finish it soon.
 
@@ -73,14 +77,19 @@ assistance from the instructor as needed.
 **_Expect an error from the following command._**
 
 1. Create your smoke test file to validate your work.
-  ```mkdir examples```
+
+    ```mkdir examples```
+
 1. Edit `examples/init.pp`
 1. Validate your syntax using `pdk`.
-  ```pdk validate```
-1. Using puppet apply, validate your smoke test.
-  ```puppet apply examples/init.pp --noop```
 
-# Solution
+    ```pdk validate```
+
+1. Using puppet apply, validate your smoke test.
+
+    ```puppet apply examples/init.pp --noop```
+
+## Solution
 
 ### Your module structure should resemble
 

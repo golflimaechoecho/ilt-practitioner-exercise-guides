@@ -1,4 +1,4 @@
-# Lab 6.2: Iterating with each:
+# Lab 6.2: Iterating with each
 
 Often codebases that grow organically end up with snippets of cut-and-pasted repeated code. Some parts of the repetition will be identical, and some parts will have subtle differences. Since this eventually becomes an unmaintainable mess, we must proactively refactor once we start down this path.
 
@@ -34,7 +34,7 @@ class system::admins {
 
 Let's use Puppet 6 iteration. What commonalities can you see in this code? What differences do you see? Have you spotted the bug?
 
-### Create a new `admins` class
+## Create a new `admins` class
 
 1. Change directory to your `[modulepath]/system`
 
@@ -90,11 +90,11 @@ class { 'ntp':
 
 Refactor your code with the `pick()` function to remove even more duplication.
 
-# Solution
+## Solution
 
 ### Your module structure should resemble
 
-```
+```plaintext
 [root@training modules]# tree system/
 system/
 ├── examples
@@ -153,9 +153,7 @@ class system::admins {
 include system::admins
 ```
 
-### Extra credit
-
-#### Example file: `system/manifests/admins_pick.pp`
+### Extra credit Example file: `system/manifests/admins_pick.pp`
 
 ```ruby
 class system::admins_pick {

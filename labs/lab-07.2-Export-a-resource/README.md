@@ -31,31 +31,29 @@ As you and other students finish and apply this class, host records for each stu
     * How many entries are there?
     * What happens if you wait a minute or two and run the agent again?
 
-**_If you get a `Duplicate declaration` error, you'll need to comment out the `host` resource for your own vm from the `system::hosts` class._**
+    **_If you get a `Duplicate declaration` error, you'll need to comment out the `host` resource for your own vm from the `system::hosts` class._**
 
-### Expected output
+    The output should be similar to this:
 
-The output should be similar to this:
+    ```plaintext
+    [root@training hosts]# puppet agent -t
+    Info: Retrieving plugin
+    [...]
+    Info: Caching catalog for training.puppetlabs.vm
+    Info: Applying configuration version '1379359877'
+    Notice: /Stage[main]/Hosts/Host[chris.puppetlabs.vm]/ensure: created
+    Info: FileBucket adding {md5}a412e96ac36db22e2fe988313261c71b
+    Notice: /Stage[main]/Hosts/Host[fazle.puppetlabs.vm]/ensure: created
+    Notice: /Stage[main]/Hosts/Host[clarence.puppetlabs.vm]/ensure: created
+    Notice: /Host[clarence]/ensure: removed
+    Notice: Finished catalog run in 1.22 seconds
+    ```
 
-```
-[root@training hosts]# puppet agent -t
-Info: Retrieving plugin
-[...]
-Info: Caching catalog for training.puppetlabs.vm
-Info: Applying configuration version '1379359877'
-Notice: /Stage[main]/Hosts/Host[chris.puppetlabs.vm]/ensure: created
-Info: FileBucket adding {md5}a412e96ac36db22e2fe988313261c71b
-Notice: /Stage[main]/Hosts/Host[fazle.puppetlabs.vm]/ensure: created
-Notice: /Stage[main]/Hosts/Host[clarence.puppetlabs.vm]/ensure: created
-Notice: /Host[clarence]/ensure: removed
-Notice: Finished catalog run in 1.22 seconds
-```
-
-# Solution
+## Solution
 
 ### Your module structure should resemble
 
-```
+```plaintext
 [root@training modules]# tree system/
 system/
 ├── examples

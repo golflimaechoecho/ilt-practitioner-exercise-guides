@@ -18,7 +18,7 @@ Login with `studentN@puppet.com` e.g. `student0@puppet.com.`
 > *Activity complete* button if you see it. Your slides will not advance along with
 > the instructor's until you do so.
 
-## Steps:
+## Steps
 
 **_Requirements: An SSH client such as Terminal.app or iTerm2.app, or optionally Microsoft Remote Desktop (can be found preinstalled on Windows and in the macOS AppStore.)_**
 
@@ -41,7 +41,7 @@ it is located as you will use it as the value of an argument below.
 
 Using a terminal type
 
-```
+```plaintext
 chmod 600 /path/to/downloaded/student.pem
 
 ssh centos@XXXXnixN.classroom.puppet.com -i /path/to/downloaded/student.pem
@@ -68,7 +68,8 @@ page under "Type: Windows".
 
 **_If you would like to connect directly from your macOS or Linux workstation skip these steps and proceed to the optional steps below._**
 
-#### PuTTY Method
+### PuTTY Method
+
 1. On your Windows student machine, open a PowerShell window
 1. Launch PuTTY by typing `putty` and pressing enter:
     * In the Host Name field, copy and paste your Linux machine's hostname from the Welcome page
@@ -99,45 +100,42 @@ Verify that Git is installed. You will use this for version control when you edi
 
 **_You should see output similar to the following (note: your version number may be different):_**
 
-```
+```plaintext
 [centos@XXXXlinN ~]$ git --version
 git version 1.8.3.1
 ```
 
-.callout.info For all labs in this class, `sudo su -` so that you are root. All labs are to be completed as root
+**_For all labs in this class, `sudo su -` so that you are root. All labs are to be completed as root_**
 
-### Install the Puppet agent using Bolt:
+### Install the Puppet agent using Bolt
 
-### Step 1
+1. Execute the following commands to add the required YUM repository and install the bolt package:
 
-Execute the following commands to add the required YUM repository and install the bolt package:
+    ```sudo yum install -y puppet-bolt```
 
-```
-sudo yum install -y puppet-bolt
-```
+1. Now you will validate if your bolt installation is working properly:
 
-### Step 2
+    ```plaintext
+    $ bolt --version
+    1.39.0
+    ```
 
-Now you will validate if your bolt installation is working properly:
+1. A basic installation script has been pre-staged in your home directory, here `~/install_pe_agent.sh` Invoke the script using Bolt in order to install the agent on your local system:
 
-```
-$ bolt --version
-1.39.0
-```
-
-### Step 3
-
-A basic installation script has been pre-staged in your home directory, here `~/install_pe_agent.sh` Invoke the script using Bolt in order to install the agent on your local system:
-
-```[centos@XXXXlinN ~]$ sudo /usr/local/bin/bolt script run install_pe_agent.sh --nodes localhost```
+    ```[centos@XXXXlinN ~]$ sudo /usr/local/bin/bolt script run install_pe_agent.sh --nodes localhost```
 
 ### Explore your new puppet agent installation
 
 1. Run the following commands:
-    * `puppet --version`
-    * `puppet agent --configprint confdir`
-    * `puppet agent --configprint certname`
-    * `puppet agent --configprint server`
+
+    ```puppet --version```
+
+    ```puppet agent --configprint confdir```
+
+    ```puppet agent --configprint certname```
+
+    ```puppet agent --configprint server```
+
 1. Experiment with the management tools.
     * Services
       * `systemctl status crond`

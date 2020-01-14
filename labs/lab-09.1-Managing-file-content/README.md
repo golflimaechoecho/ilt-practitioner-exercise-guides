@@ -10,7 +10,7 @@ Finally, if you choose to tackle the extra credit task, you will abstract the us
 
 **_To prevent resource contention, you will need to remove the `review` classification from your node group if you have not already done so._**
 
-## Steps:
+## Steps
 
 1. Change directories to `[modulepath]`
 
@@ -34,10 +34,11 @@ Finally, if you choose to tackle the extra credit task, you will abstract the us
 
 1. Create the `file_content` class.
 
-    ```
+    ```plaintext
     cd file_content
     pdk new class file_content
     ```
+
 1. Edit `manifests/init.pp`
 1. Add `file_line` resources to manage `cron.allow` and `cron.deny`.
 1. Use a `concat` resource to manage `/etc/motd`.
@@ -73,11 +74,11 @@ file_content::motd { 'production warning':
 }
 ```
 
-# Solutions
+## Solutions
 
 ### Your module structure should resemble
 
-```
+```plaintext
 [root@training modules]# tree file_content/
 file_content/
 ├── examples

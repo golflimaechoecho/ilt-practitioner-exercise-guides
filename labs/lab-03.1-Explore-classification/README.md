@@ -8,7 +8,7 @@ Then customize root's user account on your agent by adding classification rules 
 
 **_Reminder Any time you see studentN, it is referring to your assigned student number, such as student4._**
 
-### Examine your node in the Console
+## Examine your node in the Console
 
 1. Log into the Enterprise Console using your web browser:
     * Navigate to the welcome page and click on the Console URL
@@ -52,7 +52,7 @@ The first step is to create a new node group that will have the environment grou
 
 Go to your [control-repo] and edit the Puppetfile. Uncomment the userprefs module and its dependencies.
 
-```
+```plaintext
 mod 'pltraining-userprefs'
 mod 'stahnma/epel'
 ```
@@ -61,9 +61,11 @@ mod 'stahnma/epel'
 
 These commands are the same on windows and linux:
 
-1. `git add Puppetfile`
-1. `git commit -m 'Add userprefs module'`
-1. `git push origin studentN`
+  ```git add Puppetfile```
+
+  ```git commit -m 'Add userprefs module'```
+
+  ```git push origin studentN```
 
 #### Classify the userprefs module
 

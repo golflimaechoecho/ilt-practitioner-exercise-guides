@@ -46,21 +46,22 @@ Your job is to refactor this example to use composition rather than inheritance.
 
 **_You may encounter a duplicate resource error if your node group is still classified with the `ordering` class. Remove that classification to proceed._**
 
-## Steps:
+## Steps
 
 ### Obtain the component modules
 
 1. Install the modules used for this lab:
-  * Edit `[control-repo]/Puppetfile`.
-  * Uncomment the following lines in the Puppetfile.  
-      
-      ```
+
+    * Edit `[control-repo]/Puppetfile`.
+    * Uncomment the following lines in the Puppetfile.  
+
+      ```plaintext
       mod 'puppetlabs/apache'
       mod 'puppetlabs/haproxy'
       mod 'hunner/wordpress'
       ```
 
-1. Read the documentation for these modules as needed.
+2. Read the documentation for these modules as needed.
     * You may use the README file in the module directory or the Puppet Forge
       module page as you prefer.
 
@@ -115,7 +116,7 @@ Your job is to refactor this example to use composition rather than inheritance.
 
     The output should be similar to this:
 
-    ```
+    ```plaintext
     [root@training modules]# puppet apply webapp/examples/init.pp
     notice: /Stage[main]/Mysql::Server/Package[mysql-server]/ensure: created
     notice: /Stage[main]/Mysql::Server/Service[mysqld]/ensure: ensure changed
@@ -141,18 +142,18 @@ Your job is to refactor this example to use composition rather than inheritance.
 While we're at it, you can earn some brownie points by extending the functionality of the module to support multiple Linux distributions using the `params` pattern. Calculate the default path of the `$docroot` in `params.pp` and inherit that class in `webapp` to make the variables available.
 
 1. Create a `webapp::params` class that calculates the default `$docroot` based on the `$facts['os']['family']` fact
-    
+
     ```pdk new class params```
 
 1. Edit `manifests/params.pp`
 1. Refactor `webapp` to inherit from the `webapp::params` class and use it to calculate appropriate platform defaults
    * Edit `manifests/init.pp`
 
-# Solution
+## Solution
 
 ### Your module structure should resemble
 
-```
+```plaintext
 [root@training modules]# tree webapp/
 webapp/
 ├── examples
@@ -204,9 +205,7 @@ class webapp (
 }
 ```
 
-### Extra Credit
-
-#### Example file: `webapp/manifests/init.pp`
+#### Extra Credit Solution Example file: `webapp/manifests/init.pp`
 
 ```ruby
 class webapp (
@@ -234,7 +233,7 @@ class webapp (
 }
 ```
 
-#### Example file: `webapp/manifests/params.pp`
+#### Extra Credit Solution Example file: `webapp/manifests/params.pp`
 
 ```ruby
 class webapp::params {

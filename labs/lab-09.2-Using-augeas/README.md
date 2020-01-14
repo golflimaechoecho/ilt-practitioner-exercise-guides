@@ -4,14 +4,14 @@ Augeas abstracts the responsibility of text file parsing away from us. Rather th
 
 In this lab, you will use the `augeas` resource type to ensure that the Kerberos default realm we looked at before is set to `PUPPETLABS.VM`.
 
-## Steps:
+## Steps
 
 ### Discover the context for the setting we want to manage
 
 Use the `/opt/puppetlabs/puppet/bin/augtool` shell to find the path to `default_realm`
 in `krb5.conf`. Remember that the shell will tab-complete.
 
-```
+```plaintext
 [root@training ~]# /opt/puppetlabs/puppet/bin/augtool
 augtool> ls /files/etc/krb5.conf
 logging/ = (none)
@@ -25,7 +25,7 @@ augtool> quit
 
 ### Write a class to manage Kerberos
 
-You have already created a kerberos class, you will be modifying it now.
+You have already created a kerberos module, you will be modifying it now.
 
 1. Add a new `augeas` resource type to your class.
 
@@ -41,8 +41,8 @@ You have already created a kerberos class, you will be modifying it now.
 1. In the PE console, classify your node with 'kerberos'.
 1. Run `puppet agent -t`
 1. Validate your change using the `default_realm` custom fact or by inspection.
-    
-    ```
+
+    ```plaintext
     facter -p default_realm
     grep default_realm /etc/krb5.conf
     ```
@@ -51,7 +51,7 @@ You have already created a kerberos class, you will be modifying it now.
 
     **_Depending on the Kerberos version installed, you may notice that your fact now returns multiple settings! Some packages ship with the `DEFAULT_REALM` rule commented out and this confuses our simple text parsing fact from the earlier lab. You may consider implementing the Augeas based fact described in the extra credit options as a more robust solution._**
 
-    ```
+    ```plaintext
     [root@training modules]# puppet apply kerberos/examples/init.pp
     notice: /Stage[main]/Kerberos/Augeas[krb5.conf]/returns: executed successfully
     notice: Finished catalog run in 0.20 seconds
@@ -61,7 +61,7 @@ You have already created a kerberos class, you will be modifying it now.
 
 ## Extra Credit option(s)
 
-#### Use Augeas libraries in a fact
+### Use Augeas libraries in a fact
 
 Modify the existing shell based fact from an earlier lab to retrieve the default realm in a less fragile manner than manual text parsing. Example Ruby code might look like the following. Recall that Ruby, like perl, implicitly returns the value of the last expression evaluated.
 
@@ -88,11 +88,11 @@ kerberos::defaults { 'ticket_lifetime':
 }
 ```
 
-# Solution
+## Solution
 
-### Your module structure should resemble:
+### Your module structure should resemble
 
-```
+```plaintext
 [root@training modules]# tree kerberos/
 kerberos/
 ├── examples

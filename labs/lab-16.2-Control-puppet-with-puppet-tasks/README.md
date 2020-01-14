@@ -8,7 +8,7 @@ We'll experiment with Puppet Tasks to interact with nodes in the classroom and t
 
 **_This exercise will be performed in the PE Console._**
 
-## Steps:
+## Steps
 
 1. Log in to the Puppet Enterprise console using your user credentials
 1. Under "RUN" in the left-hand navigation pane, click "Puppet"
@@ -28,7 +28,8 @@ We'll experiment with Puppet Tasks to interact with nodes in the classroom and t
 1. Click "Select"
 1. _DO NOT_ run the job, just note the nodes that display in the node list.
 
-#### Discussion Questions
+### Discussion Questions
+
 * Did you see any difference in nodes responding when you applied the filter?
 * What kind of security considerations might you want to keep in mind when
   architecting your infrastructure?

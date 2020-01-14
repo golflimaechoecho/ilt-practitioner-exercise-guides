@@ -36,7 +36,7 @@ Do some basic research, or otherwise gather a list of components that you will n
 
 Component modules that you might use could include `mysql`, `apache`, `php`, `exim`, `nagios`, `splunk`, `spamd`, `clamav`, etc. or you could design stacks with other components to meet your needs.
 
-## Steps:
+## Steps
 
 1. If it doesn't exist, create a new `profile` directory.
     * `cd [control-repo]/site/`
@@ -48,17 +48,17 @@ Component modules that you might use could include `mysql`, `apache`, `php`, `ex
 1. Do not validate and test your classes as they're not intended to be complete
    working solutions.
 
-#### Discussion Questions
+### Discussion Questions
 
 * Can you quickly identify unique profiles that fit your own infrastructure?
 * Should profiles take parameters? Why or why not?
 * What might you do when you have a profile that needs to be customized?
 
-# Solution
+## Solution
 
 ### Your module structure should resemble
 
-```
+```plaintext
 [root@training site]# tree profile/
 profile/
 └── manifests

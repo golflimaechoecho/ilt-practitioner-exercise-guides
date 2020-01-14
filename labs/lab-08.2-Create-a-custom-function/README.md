@@ -4,7 +4,7 @@ Writing custom functions allows us to quickly and easily extend the Puppet langu
 
 If we were writing code that would run on the node in which the user exists, this would be easy to do with something like:
 
-```
+```plaintext
 [root@training ~]# getent passwd "training" | cut -d: -f6
 /home/training
 ```
@@ -22,7 +22,7 @@ else
 end
 ```
 
-## Steps:
+## Steps
 
 1. Create a new function in a ruby file called `homedir.rb`.
     * Edit `[modulepath]/system/lib/puppet/functions/homedir.rb`
@@ -33,7 +33,7 @@ end
 1. Deploy your code.
 1. Run a `puppet agent -t`
 
-#### Sample test manifest:
+### Sample test manifest
 
 ```ruby
 notify { "Root's home directory is ${homedir('root')}": }
@@ -44,11 +44,11 @@ notify { "Test's home directory is ${homedir('test')}": }
 
 Revisit your `system::managed_user` defined type and use this function to calculate the user's home directory.
 
-# Solution
+## Solution
 
 ### Your module structure should resemble
 
-```
+```plaintext
 [root@training modules]# tree system/
 system/
 ├── examples

@@ -22,7 +22,7 @@ Continue on from this example and add roles for
 
 Notice that this example includes a profile that wasn't defined in the previous lab. This is to show the iterative nature of designing the different layers. As we identify missing profiles, we can go back and add them to our model, and similarly for component modules included in our profiles.
 
-## Steps:
+## Steps
 
 1. If it doesn't exist, create a new `role` directory.
     * `cd [control-repo]/site/`
@@ -35,18 +35,17 @@ Notice that this example includes a profile that wasn't defined in the previous 
    working solutions.
 1. Commit and push your updates.
 
-#### Discussion Questions
+### Discussion Questions
 
 * What might you do if a few parameters need to be customized in a role or profile?
 * What is the benefit to this layering and abstraction?
 * What other classification schemes might you see being useful?
 
-
-# Solution
+## Solution
 
 ### Your module structure should resemble
 
-```
+```plaintext
 [root@training modules]# tree role/
 role/
 └── manifests

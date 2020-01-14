@@ -24,7 +24,7 @@ In this exercise, you will create a simple defined type that wraps a user type a
       ```mkdir examples```
 
     * Edit `examples/managed_user.pp` and declare at least two `system::managed_user` resources.
-    
+
       **Example declarations**
 
       ```ruby
@@ -43,7 +43,7 @@ In this exercise, you will create a simple defined type that wraps a user type a
 
       The output should be similar to this
 
-      ```
+      ```plaintext
       [root@1970nix0 ~]# puppet apply examples/managed_user.pp
       Info: Using configured environment 'production'
       Info: Retrieving pluginfacts
@@ -76,28 +76,28 @@ In this exercise, you will create a simple defined type that wraps a user type a
 1. Switch users on your node to one of the new users: `sudo -su kaitlin`
 1. Observe the login script output.
 
-   The output should be similar to this
+    The output should be similar to this
 
-   ```
-   # sudo -su - kaitlin
-   ______________
-   < Hello there! >
-   --------------
-     \   ^__^
-      \  (oo)\_______
-         (__)\       )\/\
-             ||----w |
-             ||     ||
-   [kaitlin@training root]$ exit
-   exit
-   #
-   ```
+    ```plaintext
+    # sudo -su - kaitlin
+    ______________
+    < Hello there! >
+    --------------
+      \   ^__^
+       \  (oo)\_______
+          (__)\       )\/\
+              ||----w |
+              ||     ||
+    [kaitlin@training root]$ exit
+    exit
+    #
+    ```
 
-# Solution
+## Solution
 
 ### Your module structure should resemble
 
-```
+```plaintext
 [root@training modules]# tree system/
 system/
 ├── examples

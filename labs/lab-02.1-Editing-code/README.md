@@ -15,7 +15,7 @@ When we cover community modules from the Puppet Forge, we'll show you how to
 incorporate external modules without needing to copy them into your own
 repository. The `modules` directory is reserved for these modules.
 
-### Select your own branch of the control repository
+## Select your own branch of the control repository
 
 1. Log into the classroom welcome page and click the link labeled __Gitlab__
     * Login with the username `studentN`
@@ -25,69 +25,68 @@ repository. The `modules` directory is reserved for these modules.
 1. Use the **Branch** dropdown menu to select your branch.
 1. Complete the rest of the lab instructions.
 
-
 ### Clone the control repository
 
 1. The `git config --global user.email` and `git config --global user.name` only need to be run once, no matter how many repositories you clone.
 1. The other steps are typical when cloning a repository and only need to be done once per repository.
 
-   **_Run these commands in a Linux shell (or a Windows host machine using Visual Studio code):_**
+    **_Run these commands in a Linux shell (or a Windows host machine using Visual Studio code):_**
 
-   ```
-   git config --global user.email "noreply@puppet.com"
-   git config --global user.name "studentN"
-   git clone git@gitlab.classroom.puppet.com:puppet/control-repo.git
-   cd control-repo
-   git checkout studentN
-   ```
+    ```plaintext
+    git config --global user.email "noreply@puppet.com"
+    git config --global user.name "studentN"
+    git clone git@gitlab.classroom.puppet.com:puppet/control-repo.git
+    cd control-repo
+    git checkout studentN
+    ```
 
 1. Edit the Puppetfile inside the control-repo and add the following content.
-   **_Replace studentN with your assigned student number (i.e. studentN becomes student0)_**
+    **_Replace studentN with your assigned student number (i.e. studentN becomes student0)_**
 
-  ```ruby
-  #mod 'pltraining-userprefs'
-  #mod 'stahnma/epel'
-  #mod 'puppetlabs/apache'
-  #mod 'puppetlabs/haproxy'
-  #mod 'puppetlabs/mysql'
-  #mod 'hunner/wordpress'
+    ```ruby
+    #mod 'pltraining-userprefs'
+    #mod 'stahnma/epel'
+    #mod 'puppetlabs/apache'
+    #mod 'puppetlabs/haproxy'
+    #mod 'puppetlabs/mysql'
+    #mod 'hunner/wordpress'
 
-  #mod 'review',
-  #  :git    => 'git@gitlab.classroom.puppet.com:puppet/review.git',
-  #  :branch => 'studentN'
+    #mod 'review',
+    #  :git    => 'git@gitlab.classroom.puppet.com:puppet/review.git',
+    #  :branch => 'studentN'
 
-  #mod 'file_content',
-  #  :git => 'git@gitlab.classroom.puppet.com:puppet/file_content.git',
-  #  :branch => 'studentN'
+    #mod 'file_content',
+    #  :git => 'git@gitlab.classroom.puppet.com:puppet/file_content.git',
+    #  :branch => 'studentN'
 
-  #mod 'kerberos',
-  #  :git => 'git@gitlab.classroom.puppet.com:puppet/kerberos.git',
-  #  :branch => 'studentN'
+    #mod 'kerberos',
+    #  :git => 'git@gitlab.classroom.puppet.com:puppet/kerberos.git',
+    #  :branch => 'studentN'
 
-  #mod 'ordering',
-  #  :git => 'git@gitlab.classroom.puppet.com:puppet/ordering.git',
-  #  :branch => 'studentN'
+    #mod 'ordering',
+    #  :git => 'git@gitlab.classroom.puppet.com:puppet/ordering.git',
+    #  :branch => 'studentN'
 
-  #mod 'system',
-  #  :git => 'git@gitlab.classroom.puppet.com:puppet/system.git',
-  #  :branch => 'studentN'
+    #mod 'system',
+    #  :git => 'git@gitlab.classroom.puppet.com:puppet/system.git',
+    #  :branch => 'studentN'
 
-  #mod 'time',
-  #  :git => 'git@gitlab.classroom.puppet.com:puppet/time.git',
-  #  :branch => 'studentN'
+    #mod 'time',
+    #  :git => 'git@gitlab.classroom.puppet.com:puppet/time.git',
+    #  :branch => 'studentN'
 
-  #mod 'webapp',
-  #  :git => 'git@gitlab.classroom.puppet.com:puppet/webapp.git',
-  #  :branch => 'studentN'
-  ```
+    #mod 'webapp',
+    #  :git => 'git@gitlab.classroom.puppet.com:puppet/webapp.git',
+    #  :branch => 'studentN'
+    ```
 
 1. Save it and exit your editor.
 1. Commit and push your code changes:
 
-   ```
-   git add Puppetfile
-   git commit -m 'initial commit'
-   git push origin studentN
-   ```
+    ```git add Puppetfile```
+
+    ```git commit -m 'initial commit'```
+
+    ```git push origin studentN```
 
 |  [Previous Lab](../lab-01.1-Login-welcome-page)  |  [Next Lab](../lab-03.1-Explore-classification)  |

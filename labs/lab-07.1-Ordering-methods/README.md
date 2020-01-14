@@ -28,7 +28,7 @@ notify { 'This should come after the entire MySQL class is enforced':
 }
 ```
 
-### Prerequisites
+## Prerequisites
 
 1. Install the MySQL module if needed (it should be installed from the last lab).
 
@@ -94,7 +94,7 @@ notify { 'This should come after the entire MySQL class is enforced':
 1. Uncomment the following entry in the `[control-repo]/Puppetfile`.
     **_Replace the “N” in these answers with your student number (for example, student8)._**
 
-    ```
+    ```plaintext
     mod 'ordering',
       :git    => 'git@gitlab.classroom.puppet.com:puppet/ordering.git',
       :branch => 'studentN'
@@ -103,35 +103,34 @@ notify { 'This should come after the entire MySQL class is enforced':
 1. Commit and push your control repo changes.
 1. Run `puppet agent -t`.
 
-#### Expected output
+    **_Pay close attention to the order in which resources were enforced._**
 
-Pay close attention to the order in which resources were enforced.
-**_Your output should be similar to this_**
+    **_Your output should be similar to this_**
 
-```
-$ puppet agent -t
-Notice: Local environment: 'production' doesn't match server specified node environment 'training', switching agent to 'training'.
-Info: Retrieving pluginfacts
-Info: Retrieving plugin
-Info: Loading facts
-Info: Caching catalog for training.puppetlabs.vm
-Info: Applying configuration version 'b76bffe'
-Notice: Hello, my name is training
-Notice: /Stage[main]/Profile::Base/Notify[Hello, my name is training]/message: defined 'message' as 'Hello, my name is training'
-Notice: /Stage[main]/Mysql::Server::Config/File[mysql-config-file]/ensure: defined content as '{md5}4b16ed3375eaa96a2bc1b7aa00c5dd46'
-Notice: /Stage[main]/Mysql::Server::Install/Package[mysql-server]/ensure: created
-Notice: /Stage[main]/Mysql::Server::Service/Service[mysqld]/ensure: ensure changed 'stopped' to 'running'
-Info: /Stage[main]/Mysql::Server::Service/Service[mysqld]: Unscheduling refresh on Service[mysqld]
-Notice: This should come after the entire MySQL class is enforced
-Notice: /Stage[main]/Ordering/Notify[This should come after the entire MySQL class is enforced]/message: defined 'message' as 'This should come after the entire MySQL class is enforced'
-Notice: Applied catalog in 15.66 seconds
-```
+    ```plaintext
+    $ puppet agent -t
+    Notice: Local environment: 'production' doesn't match server specified node environment 'training', switching agent to 'training'.
+    Info: Retrieving pluginfacts
+    Info: Retrieving plugin
+    Info: Loading facts
+    Info: Caching catalog for training.puppetlabs.vm
+    Info: Applying configuration version 'b76bffe'
+    Notice: Hello, my name is training
+    Notice: /Stage[main]/Profile::Base/Notify[Hello, my name is training]/message: defined 'message' as 'Hello, my name is training'
+    Notice: /Stage[main]/Mysql::Server::Config/File[mysql-config-file]/ensure: defined content as '{md5}4b16ed3375eaa96a2bc1b7aa00c5dd46'
+    Notice: /Stage[main]/Mysql::Server::Install/Package[mysql-server]/ensure: created
+    Notice: /Stage[main]/Mysql::Server::Service/Service[mysqld]/ensure: ensure changed 'stopped' to 'running'
+    Info: /Stage[main]/Mysql::Server::Service/Service[mysqld]: Unscheduling refresh on Service[mysqld]
+    Notice: This should come after the entire MySQL class is enforced
+    Notice: /Stage[main]/Ordering/Notify[This should come after the entire MySQL class is enforced]/message: defined 'message' as 'This should come after the entire MySQL class is enforced'
+    Notice: Applied catalog in 15.66 seconds
+    ```
 
-# Solution
+## Solution
 
 ### Your module structure should resemble
 
-```
+```plaintext
 [root@training modules]# tree ordering/
 ordering/
 ├── examples
