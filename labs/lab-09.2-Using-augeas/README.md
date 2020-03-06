@@ -8,8 +8,7 @@ In this lab, you will use the `augeas` resource type to ensure that the Kerberos
 
 ### Discover the context for the setting we want to manage
 
-Use the `/opt/puppetlabs/puppet/bin/augtool` shell to find the path to `default_realm`
-in `krb5.conf`. Remember that the shell will tab-complete.
+Use the `/opt/puppetlabs/puppet/bin/augtool` shell to find the path to `default_realm` in `krb5.conf`. Remember that the shell will tab-complete.
 
 ```plaintext
 [root@training ~]# /opt/puppetlabs/puppet/bin/augtool
@@ -74,8 +73,7 @@ end
 
 #### Create a defined type
 
-Create a defined type that will make it easy to modify the `default_realm` or
-other Kerberos settings without using Augeas directly.
+Create a defined type that will make it easy to modify the `default_realm` or other Kerberos settings without using Augeas directly.
 
 An example of using this type might look like:
 

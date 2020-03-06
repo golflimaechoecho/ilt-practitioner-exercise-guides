@@ -10,7 +10,7 @@ Your task is to write a `default_realm` fact to expose this information as a  gl
 
 ### Develop your fact
 
-1. Change directory to your `[modulepath]`  
+1. Change directory to your `[modulepath]`
 
     ```$ cd $(puppet agent --configprint environmentpath)/production/modules```
 
@@ -30,11 +30,12 @@ Your task is to write a `default_realm` fact to expose this information as a  gl
     | License            | `Apache-2.0`        |
     | Operating systems  | RedHat              |
 
+1. Change directories to `kerberos`.
 1. Create your `default_realm.rb` custom fact.
-    * Edit `kerberos/lib/facter/default_realm.rb`
+    * Edit `lib/facter/default_realm.rb`
     * Execute the sample shell command as a `setcode` string.
 1. Syntax check and test your new fact locally.
-    * `ruby -c kerberos/lib/facter/default_realm.rb`
+    * `/opt/puppetlabs/puppet/bin/ruby -c lib/facter/default_realm.rb`
     * `RUBYLIB="kerberos/lib" facter default_realm`
 
 ### Deploy and validate your new fact
@@ -71,7 +72,7 @@ kerberos/
 
 ```ruby
 Facter.add("default_realm") do
-  setcode "/bin/awk '/default_realm/{print $NF}' /etc/krb5.conf"
+  setcode "/bin/awk '/^#/ {next} /default_realm/{print $NF}' /etc/krb5.conf"
 end
 ```
 

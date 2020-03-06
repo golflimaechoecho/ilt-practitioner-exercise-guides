@@ -1,19 +1,12 @@
 # Lab 2.1: Editing Code
 
-Review the configuration of the classroom control repository used to deploy your version of code to
-your own Puppet environment.
+Review the configuration of the classroom control repository used to deploy your version of code to your own Puppet environment.
 
-You will use your own branch in the control repository in order to have your
-own version of the code. Nearly all the code editing you do in the classroom
-will happen in this branch. The instructor will demonstrate the codebase
-populating on the classroom Puppet master as each student completes this lab.
+You will use your own branch in the control repository in order to have your own version of the code. Nearly all the code editing you do in the classroom will happen in this branch. The instructor will demonstrate the codebase populating on the classroom Puppet master as each student completes this lab.
 
-**_Throughout the course, we'll refer to the top level of this control
-repository as `[control-repo]` when describing paths to files you should edit._**
+**_Throughout the course, we'll refer to the top level of this control repository as `[control-repo]` when describing paths to files you should edit._**
 
-When we cover community modules from the Puppet Forge, we'll show you how to
-incorporate external modules without needing to copy them into your own
-repository. The `modules` directory is reserved for these modules.
+When we cover community modules from the Puppet Forge, we'll show you how to incorporate external modules without needing to copy them into your own repository. The `modules` directory is reserved for these modules.
 
 ## Select your own branch of the control repository
 

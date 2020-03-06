@@ -67,13 +67,13 @@ Your job is to refactor this example to use composition rather than inheritance.
 
 ### Create a new module `webapp` with pdk
 
-1. Change directory to your `[modulepath]`  
+1. Change directory to your `[modulepath]`
 
-    ```$ cd $(puppet agent --configprint environmentpath)/production/modules```
+    ```cd $(puppet agent --configprint environmentpath)/production/modules```
 
 1. Create the module structure
 
-    ```$ pdk new module```
+    ```pdk new module```
 
 1. Press `Enter`. You will see several questions requiring an answer. Enter the answers as you see below:
 
@@ -110,14 +110,25 @@ Your job is to refactor this example to use composition rather than inheritance.
     ```pdk validate```
 
 1. Edit `examples/wordpress.pp`
+
+    ```include webapp::wordpress```
+
+1. To test locally you will need the following modules installed locally.
+
+    ```puppet module install puppetlabs/apache```
+
+    ```puppet module install puppetlabs/haproxy```
+
+    ```puppet module install hunner/wordpress```
+
 1. Run a local puppet apply
 
-    ```puppet apply webapp/examples/wordpress.pp```
+    ```puppet apply examples/wordpress.pp --noop```
 
     The output should be similar to this:
 
     ```plaintext
-    [root@training modules]# puppet apply webapp/examples/init.pp
+    [root@training modules]# puppet apply webapp/examples/wordpress.pp
     notice: /Stage[main]/Mysql::Server/Package[mysql-server]/ensure: created
     notice: /Stage[main]/Mysql::Server/Service[mysqld]/ensure: ensure changed
     'stopped' to 'running'
@@ -170,8 +181,8 @@ webapp/
 class webapp::wordpress {
   include wordpress
 
-  class {'webapp':
-    docroot => '/opt/wordpress',
+  class { 'webapp':
+    docroot  => '/opt/wordpress',
     app_name => 'wordpress',
   }
 }
@@ -182,7 +193,7 @@ class webapp::wordpress {
 ```ruby
 class webapp (
   String $docroot = '/var/www/html',
-  String $app_name = 'webapp'
+  String $app_name = 'webapp',
 ) {
   include mysql::server
   class { 'mysql::bindings':

@@ -38,13 +38,13 @@ Let's use Puppet 6 iteration. What commonalities can you see in this code? What 
 
 1. Change directory to your `[modulepath]/system`
 
-    ```$ cd $(puppet agent --configprint environmentpath)/production/modules/system```
+    ```cd $(puppet agent --configprint environmentpath)/production/modules/system```
 
-1. Make a new class `admins`.
+2. Make a new class `admins`.
 
-    ```$ pdk new class admins```
+    ```pdk new class admins```
 
-1. Make a list of all admin users that exist.
+3. Make a list of all admin users that exist.
     * Make a list of all users who have had their accounts retired.
     * Identify the parameter(s) common to most users and the outlier(s).
     * Correct any errors discovered.
@@ -59,17 +59,17 @@ Let's use Puppet 6 iteration. What commonalities can you see in this code? What 
 
 1. Install the `puppetlabs/mysql` module if needed.
 
-    ```$ puppet module install puppetlabs/mysql```
+    ```puppet module install puppetlabs/mysql```
 
-1. Validate and test your new class.
+2. Validate and test your new class.
 
-    ```$ pdk validate```
+    ```pdk validate```
 
-1. Test your new class.
+3. Test your new class.
 
-    ```$ puppet apply -e 'include system::admins'```
+    ```puppet apply -e 'include system::admins'```
 
-1. Commit and push your changes.
+4. Commit and push your changes.
 
 ### Extra credit
 

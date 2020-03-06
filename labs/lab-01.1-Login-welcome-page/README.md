@@ -1,22 +1,16 @@
 # Lab 1.1: Login welcome page
 
-All accounts needed for the labs in this course have credentials displayed on
-the classroom welcome page.
+All accounts needed for the labs in this course have credentials displayed on the classroom welcome page.
 
-**_Your instructor will provide you with a 4 digit class id. Replace the `XXXX` in
-these instructions with that ID._**
+**_Your instructor will provide you with a 4 digit class id. Replace the `XXXX` in these instructions with that ID._**
 
 Using your computer login to `https://classXXXX.classroom.puppet.com`
 
-You will be prompted for an email address. Your instructor will assign
-you a student number. Replace the `N` with the student number provided in
-these instructions with that number.
+You will be prompted for an email address. Your instructor will assign you a student number. Replace the `N` with the student number provided in these instructions with that number.
 
 Login with `studentN@puppet.com` e.g. `student0@puppet.com.`
 
-> When you've completed a Lab or an Exercise, please check off the
-> *Activity complete* button if you see it. Your slides will not advance along with
-> the instructor's until you do so.
+> When you've completed a Lab or an Exercise, please check off the *Activity complete* button if you see it. Your slides will not advance along with the instructor's until you do so.
 
 ## Steps
 
@@ -47,8 +41,7 @@ chmod 600 /path/to/downloaded/student.pem
 ssh centos@XXXXnixN.classroom.puppet.com -i /path/to/downloaded/student.pem
 ```
 
-> Tip you can type `-i` and drag the file into the Terminal window in most
-> applications , to automatically fill the path to the file in.
+> Tip you can type `-i` and drag the file into the Terminal window in most applications , to automatically fill the path to the file in.
 
 **_Proceed to the Validate and configure the agent environment_**
 
@@ -60,9 +53,7 @@ Using the username "Administrator" and the __windows__ "RDP Password" displayed
 to you on the welcome page, connect to the "hostname" displayed on the welcome
 page under "Type: Windows".
 
-> If you prompted about the security of the certificate , acknowledge the dialog
-> affirmatively e.g. "continue". The certificates used in this classroom are
-> self signed and will not be trusted by your operating system by default.
+> If you prompted about the security of the certificate , acknowledge the dialog affirmatively e.g. "continue". The certificates used in this classroom are self signed and will not be trusted by your operating system by default.
 
 ### Connecting to the Linux Host using PuTTY or Openssh method
 
@@ -105,8 +96,6 @@ Verify that Git is installed. You will use this for version control when you edi
 git version 1.8.3.1
 ```
 
-**_For all labs in this class, `sudo su -` so that you are root. All labs are to be completed as root_**
-
 ### Install the Puppet agent using Bolt
 
 1. Execute the following commands to add the required YUM repository and install the bolt package:
@@ -122,9 +111,15 @@ git version 1.8.3.1
 
 1. A basic installation script has been pre-staged in your home directory, here `~/install_pe_agent.sh` Invoke the script using Bolt in order to install the agent on your local system:
 
-    ```[centos@XXXXlinN ~]$ sudo /usr/local/bin/bolt script run install_pe_agent.sh --nodes localhost```
+    ```[centos@XXXXlinN ~]$ sudo /usr/local/bin/bolt script run install_pe_agent.sh --targets localhost```
 
 ### Explore your new puppet agent installation
+
+**_For all labs in this class, `sudo su -` so that you are root. All labs are to be completed as root_**
+
+1. sudo to root
+
+    ```sudo su -```
 
 1. Run the following commands:
 

@@ -44,13 +44,13 @@ notify { 'This should come after the entire MySQL class is enforced':
 
 1. Change directory to your `[modulepath]`.
 
-    ```$ cd $(puppet agent --configprint environmentpath)/production/modules```
+    ```cd $(puppet agent --configprint environmentpath)/production/modules```
   
-1. Create a new module called `ordering`.
+2. Create a new module called `ordering`.
 
-    ```$ pdk new module```
+    ```pdk new module```
 
-1. You will see several questions requiring an answer. Enter the answers as you see below:
+3. You will see several questions requiring an answer. Enter the answers as you see below:
 
     **_Replace the N in studentN with your student number, e.g. `student8`_**
 
@@ -62,26 +62,26 @@ notify { 'This should come after the entire MySQL class is enforced':
     | License            | `Apache-2.0`        |
     | Operating systems  | RedHat              |
 
-1. Change directory to your `[modulepath]/ordering`
+4. Change directory to your `[modulepath]/ordering`
 
-    ```$ cd ordering```
+    ```cd ordering```
 
-1. Create a new class `ordering`.
+5. Create a new class `ordering`.
 
-    ```$ pdk new class ordering```
+    ```pdk new class ordering```
 
-1. Edit `manifests/init.pp`
-1. Create the `mysql` class.
+6. Edit `manifests/init.pp`
+7. Create the `mysql` class.
 
-    ```$ pdk new class mysql```
+    ```pdk new class mysql```
 
-1. Edit `manifests/mysql.pp`
+8. Edit `manifests/mysql.pp`
 
 ### Validate and commit your code
 
 1. Validate and test the new class:
 
-    ```$ pdk validate```
+    ```pdk validate```
 
 1. Commit your changes to the repo.
     * Init your module: `git init`
@@ -90,6 +90,10 @@ notify { 'This should come after the entire MySQL class is enforced':
     * Add the files: `git add --all`
     * Create a commit: `git commit -m "Initial Commit"`
     * Push the commit to the Git server: `git push origin studentN`
+
+1. Update your `[control-repo]`
+
+   ```cd ~/control-repo```
 
 1. Uncomment the following entry in the `[control-repo]/Puppetfile`.
     **_Replace the “N” in these answers with your student number (for example, student8)._**
@@ -101,6 +105,10 @@ notify { 'This should come after the entire MySQL class is enforced':
     ```
 
 1. Commit and push your control repo changes.
+    * Add the files: `git add Puppetfile`
+    * Create a commit: `git commit -m "Lab 7.1 update"`
+    * Push the commit to the Git server: `git push origin studentN`
+1. Classify your `ordering` class in the PE Console.
 1. Run `puppet agent -t`.
 
     **_Pay close attention to the order in which resources were enforced._**
@@ -108,7 +116,7 @@ notify { 'This should come after the entire MySQL class is enforced':
     **_Your output should be similar to this_**
 
     ```plaintext
-    $ puppet agent -t
+    puppet agent -t
     Notice: Local environment: 'production' doesn't match server specified node environment 'training', switching agent to 'training'.
     Info: Retrieving pluginfacts
     Info: Retrieving plugin

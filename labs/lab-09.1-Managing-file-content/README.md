@@ -14,13 +14,13 @@ Finally, if you choose to tackle the extra credit task, you will abstract the us
 
 1. Change directories to `[modulepath]`
 
-    ```$ cd $(puppet agent --configprint environmentpath)/production/modules```
+    ```cd $(puppet agent --configprint environmentpath)/production/modules```
 
-1. Create a new module `file_content`
+2. Create a new module `file_content`
 
-    ```$ pdk new module```
+    ```pdk new module```
 
-1. You will see several questions requiring an answer. Enter the answers as you see below:
+3. You will see several questions requiring an answer. Enter the answers as you see below:
 
     **_Replace the N in studentN with your student number, e.g. `student8`_**
 
@@ -32,17 +32,17 @@ Finally, if you choose to tackle the extra credit task, you will abstract the us
     | License            | `Apache-2.0`        |
     | Operating systems  | RedHat              |
 
-1. Create the `file_content` class.
+4. Create the `file_content` class.
 
     ```plaintext
     cd file_content
     pdk new class file_content
     ```
 
-1. Edit `manifests/init.pp`
-1. Add `file_line` resources to manage `cron.allow` and `cron.deny`.
-1. Use a `concat` resource to manage `/etc/motd`.
-1. Use `concat::fragment` resources to append messages to the `motd`.
+5. Edit `manifests/init.pp`
+6. Add `file_line` resources to manage `cron.allow` and `cron.deny`.
+7. Use a `concat` resource to manage `/etc/motd`.
+8. Use `concat::fragment` resources to append messages to the `motd`.
     * Use templates to generate content if you'd like.
 
 ### Test your module

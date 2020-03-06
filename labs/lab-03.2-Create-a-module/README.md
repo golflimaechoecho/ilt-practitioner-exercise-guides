@@ -29,11 +29,11 @@ assistance from the instructor as needed.
 
 1. Change directory to your `[modulepath]` by running
 
-    ```$ cd $(puppet agent --configprint environmentpath)/production/modules```
+    ```cd $(puppet agent --configprint environmentpath)/production/modules```
 
 1. Run this command:
 
-    ```$ pdk new module```
+    ```pdk new module```
 
 1. You will see several questions requiring an answer. Enter these answers:
 
@@ -78,7 +78,7 @@ assistance from the instructor as needed.
 
 1. Create your smoke test file to validate your work.
 
-    ```mkdir examples```
+    ```cd examples```
 
 1. Edit `examples/init.pp`
 1. Validate your syntax using `pdk`.

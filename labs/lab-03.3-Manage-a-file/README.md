@@ -10,6 +10,10 @@ The exercise asks you to add some dynamic content to `/etc/motd` with an `.epp` 
 
 ### Update the class from last exercise
 
+1. Make sure you are in your `review` module
+
+    ```cd $(puppet agent --configprint environmentpath)/production/modules/review```
+
 1. Edit the file `[modulepath]/review/manifests/motd.pp`.
 1. Add a file resource to manage `/etc/motd` using a template to generate the content.
 1. Edit the `[modulepath]/review/templates/motd.epp` template in the `review` module.
@@ -32,11 +36,13 @@ The exercise asks you to add some dynamic content to `/etc/motd` with an `.epp` 
 
 Go to your [control-repo] and edit the Puppetfile by uncommenting the following lines in `[control-repo]/Puppetfile`. When you're done editing, push it to your branch.
 
-```plaintext
-mod 'review',
-  :git    => 'git@gitlab.classroom.puppet.com:puppet/review.git',
-  :branch => 'studentN'
-```
+   ```cd ~/control-repo```
+
+   ```plaintext
+   mod 'review',
+     :git    => 'git@gitlab.classroom.puppet.com:puppet/review.git',
+     :branch => 'studentN'
+   ```
 
 **_You could also use `:branch => :control_branch` which is automatically populated with the control repos branch name (which matches your module repo branch name in this example)._**
 
@@ -50,7 +56,7 @@ mod 'review',
 
     ```git push origin studentN```
 
-1. Add classification
+2. Add classification
     * Navigate to the **CONFIGURE** -> **Classification** tab.
     * Find and select your Node Group from the list.
 
