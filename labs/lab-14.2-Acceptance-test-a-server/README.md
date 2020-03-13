@@ -17,13 +17,41 @@ In this lab you will create serverspec tests for the Apache module from the prev
 **_Best practices are to not pollute Puppet's vendored Ruby path with extra gems unless they're required to directly operate with the Puppet libraries. In this case, Serverspec does not need Puppet libraries, so we'll install to system Ruby._**
 
 ### Configure your module for testing
+1. Add the Serverspec gem to the Gemfile as the documentation at https://github.com/puppetlabs/pdk-templates#setting-custom-gems-in-the-gemfile
+   * update /apache/.sync.yml
+   ```plaintext
+   
+   Gemfile:
+     optional:
+       ':development':
+         - gem: 'puppet-lint-my_awesome_custom_module'
+   ```
+   
+   * execute `pdk update --force`
+   
+   ```plaintext
+   [root@training serverspec]# pdk update --force
+   pdk (INFO): Updating studentN-apache using the template at https://github.com/puppetlabs/pdk-templates...
 
+   ----------Files to be modified----------
+   Gemfile
+
+   ----------------------------------------
+
+   You can find a report of differences in update_report.txt.
+
+
+   ------------Update completed------------
+
+   1 files modified.
+   ```
+   
 1. Create testing directories.
     * `cd ~/development/apache`
     * `mkdir serverspec`
     * `cd serverspec`
 1. Create default test files.
-    * `serverspec-init`
+    * `pdk bundle exec serverspec-init`
       * OS type: `1) UN*X`
       * Backend type: `2) Exec (local)`
 
@@ -32,10 +60,10 @@ In this lab you will create serverspec tests for the Apache module from the prev
 1. Ensure that Apache is uninstalled so you can observe a failure.
     * `yum erase httpd`
 1. Run the spec tests.
-    * `rake spec`
+    * `pdk bundle exec rake spec`
 1. Enforce the class and run the tests again.
     * `puppet apply ../examples/init.pp --modulepath ~/development`
-    * `rake spec`
+    * `pdk bundle exec rake spec`
 1. Update your class and/or tests until tests pass.
 
 #### Expected Output

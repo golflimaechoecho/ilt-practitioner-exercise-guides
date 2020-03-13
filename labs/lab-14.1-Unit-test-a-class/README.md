@@ -36,20 +36,7 @@ In both delivery methods for this class, we'll set up a local development & test
 
 ### Develop unit tests
 
-1. First we need to create the spec file for the apache class `spec/classes/apache_spec.rb`
-1. We are going to use `git` locally, version control is the best tool for this separation of concerns, but take care.
-   * From the root of the `apache` folder, run `git init`. If you're using VCS, use the terminal to run these commands.
-   * Add all files: `git init`, git add --all, and then `git commit -am 'init'`
-   * The `apache` module is now under version control.
-   * Make a copy to work with: `git checkout -b rspec`
-   * Now let's use version control and PDK to create new tests in a controlled manner;
-   * Run `rm manifests/*` to remove the class manifests so we can recreate them with the PDK.
-   * Recreate them with: `pdk new class apache` and `pdk new class params`. Note this creates our default spec tests too.
-   * Add just the spec files to git: `git add spec/*` followed by `git commit -m'create specs'`
-   * OK, now let's add these to our original code: `git checkout master`.
-   * Now to replace the manifests we deleted: `git reset --hard HEAD`
-   * Issue the `git merge rspec` command and you should see just the spec files added to the master branch.
-   * Validate with: `pdk test unit --list`. You should see the list of tests you created.
+1. First we need to validate the tests exist with: `pdk test unit --list`. You should see the list of tests you created during `pdk convert --add-tests` step.
 
         ```plaintext
         $pdk test unit --list
