@@ -38,12 +38,12 @@ In both delivery methods for this class, we'll set up a local development & test
 
 1. First we need to validate the tests exist with: `pdk test unit --list`. You should see the list of tests you created during `pdk convert --add-tests` step.
 
-        ```plaintext
-        $pdk test unit --list
-        Unit Test Files:
-        ./spec/classes/apache_spec.rb
-        ./spec/classes/params_spec.rb
-        ```
+      ```plaintext
+      $pdk test unit --list
+      Unit Test Files:
+      ./spec/classes/apache_spec.rb
+      ./spec/classes/params_spec.rb
+      ```
 
       You can even run `pdk test unit`. It will fail, but that's OK for now.
 
