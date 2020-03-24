@@ -169,5 +169,14 @@ if [ -f /etc/bashrc ]; then
         . /etc/bashrc
 fi
 ```
+#### Example file: `review/examples/init.pp`
 
+```ruby
+include review
+```
+#### Example file: `review/examples/motd.pp`
+
+```ruby
+include motd
+```
 |  [Previous Lab](../lab-03.1-Explore-classification)  |  [Next Lab](../lab-03.3-Manage-a-file)  |
