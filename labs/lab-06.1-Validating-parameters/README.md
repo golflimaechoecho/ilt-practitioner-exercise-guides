@@ -96,7 +96,7 @@ system/
     └── aliases.epp
 ```
 
-### Example file: `system/templates/aliases.pp`
+### Example file: `system/templates/aliases.epp`
 
 ```plaintext
 ...
