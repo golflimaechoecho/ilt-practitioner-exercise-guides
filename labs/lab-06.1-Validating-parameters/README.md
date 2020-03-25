@@ -114,7 +114,7 @@ root:    <%= $admin %>
 #### Example file: `system/manifests/aliases.pp`
 
 ```ruby
-class aliases (
+class system::aliases (
     $admin = 'root',
 ) {
     # uses $admin to build the aliases file
