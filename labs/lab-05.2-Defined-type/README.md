@@ -150,5 +150,19 @@ define system::managed_user (
   }
 }
 ```
+#### Example file: `system/files/bashrc`
 
+```bash
+# .bashrc
+# User specific aliases and functions
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi
+```
 |  [Previous Lab](../lab-05.1-Resource-purging)  |  [Next Lab](../lab-06.1-Validating-parameters)  |
