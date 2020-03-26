@@ -46,7 +46,7 @@ Notice that this example includes a profile that wasn't defined in the previous 
 ### Your module structure should resemble
 
 ```plaintext
-[root@training modules]# tree role/
+[root@training site]# tree role/
 role/
 └── manifests
     ├── blogserver.pp

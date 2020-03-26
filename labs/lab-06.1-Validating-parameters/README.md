@@ -96,7 +96,7 @@ system/
     └── aliases.epp
 ```
 
-### Example file: `system/templates/aliases.pp`
+### Example file: `system/templates/aliases.epp`
 
 ```plaintext
 ...
@@ -114,7 +114,7 @@ root:    <%= $admin %>
 #### Example file: `system/manifests/aliases.pp`
 
 ```ruby
-class aliases (
+class system::aliases (
     $admin = 'root',
 ) {
     # uses $admin to build the aliases file

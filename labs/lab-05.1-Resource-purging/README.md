@@ -129,11 +129,16 @@ class system::hosts {
   resources {'host':
     purge => true,
   }
-  host { 'master.puppetlabs.vm':
+  host { 'puppet.classroom.puppet.com':
     ensure       => present,
-    host_aliases => ['master'],
-    ip           => '192.168.X.X', ## use the classroom IP
+    host_aliases => ['puppet'],
+    ip           => '192.168.X.X', ## use the IP of the classroom PE server
   }
+  host { 'gitlab.classroom.puppet.com':
+    ensure       => present,
+    host_aliases => ['gitlab'],
+    ip           => '192.168.X.X', ## use the IP of the classroom Gitlab server
+  }  
   host { 'localhost':
     ensure       => present,
     host_aliases => [
@@ -146,11 +151,11 @@ class system::hosts {
     ip           => '127.0.0.1',
   }
 
-## Use your own IP, or the ::ipaddress fact
-  host { 'yourname.puppetlabs.vm':
+## Use your own hostname, alias and IP, or use facts from facter.
+  host { $::fqdn:
     ensure       => present,
-    host_aliases => ['yourname'],
-    ip           => $::ipaddress,
+    host_aliases =>  $::hostname,
+    ip           => '$::ipaddress,
   }
 }
 ```
