@@ -110,10 +110,10 @@ As the final step to this lab, you will commit your datasources to your reposito
 
 ### Example file: `~/control-repo/hieradata/hostname.yaml`
 
-    ```
-    ---
-    message: 'value from hostname'
-    ```
+```yaml
+---
+message: 'value from hostname'
+```
 
 ### Example file: `~/control-repo/manifests/site.pp`
 
