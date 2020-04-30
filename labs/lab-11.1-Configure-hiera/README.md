@@ -96,21 +96,21 @@ As the final step to this lab, you will commit your datasources to your reposito
 
 ### Example file `~/control-repo/hieradata/common.yaml`
 
-    ```yaml
+    ```
     ---
     message: 'value from common'
     ```
 
 ### Example file: `~/control-repo/hieradata/studentN.yaml`
 
-    ```yaml
+    ```
     ---
     message: 'value from StudentN'
     ```
 
 ### Example file: `~/control-repo/hieradata/hostname.yaml`
 
-    ```yaml
+    ```
     ---
     message: 'value from hostname'
     ```
