@@ -177,6 +177,6 @@ include review
 #### Example file: `review/examples/motd.pp`
 
 ```ruby
-include motd
+include review::motd
 ```
 |  [Previous Lab](../lab-03.1-Explore-classification)  |  [Next Lab](../lab-03.3-Manage-a-file)  |
