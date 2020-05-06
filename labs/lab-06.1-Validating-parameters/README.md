@@ -115,7 +115,7 @@ root:    <%= $admin %>
 
 ```ruby
 class system::aliases (
-    $admin = 'root',
+    String $admin = 'root',
 ) {
     # uses $admin to build the aliases file
     file { '/etc/aliases':
