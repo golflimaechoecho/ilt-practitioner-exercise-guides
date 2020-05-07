@@ -63,66 +63,66 @@ As the final step to this lab, you will commit your datasources to your reposito
 
 ### Example file `~/control-repo/hiera.yaml`
 
-    ```yaml
-    ---
-    version: 5
+```yaml
+---
+version: 5
 
-    defaults:
-      datadir: "data"
-    hierarchy:
-      - name: Yaml data
-        data_hash: yaml_data
-        paths:
-          - "nodes/%{::trusted.certname}.yaml"
-          - "%{environment}.yaml"
-          - "common.yaml"
-    ```
+defaults:
+  datadir: "data"
+hierarchy: 
+  - name: Yaml data
+    data_hash: yaml_data
+    paths:
+      - "nodes/%{::trusted.certname}.yaml"
+      - "%{environment}.yaml"
+      - "common.yaml"
+```
 
 **Note:** an equivalent Hiera3 file for LTS versions would be:
 
-    ```yaml
-    ---
-    :backends:
-        - yaml
+```yaml
+---
+:backends:
+    - yaml
 
-    :yaml:
-        :datadir: /etc/puppetlabs/code/hieradata
+:yaml:
+    :datadir: /etc/puppetlabs/code/hieradata
 
-    :hierarchy:
-        - "%{::trusted.certname}"
-        - "%{environment}"
-        - common
-    ```
+:hierarchy:
+    - "%{::trusted.certname}"
+    - "%{environment}"
+    - common
+```
 
 ### Example file `~/control-repo/hieradata/common.yaml`
 
-    ```yaml
-    ---
-    message: 'value from common'
-    ```
+```yaml
+---
+message: 'value from common'
+```
 
 ### Example file: `~/control-repo/hieradata/studentN.yaml`
 
-    ```yaml
-    ---
-    message: 'value from StudentN'
-    ```
+```yaml
+---
+message: 'value from StudentN'
+```
 
 ### Example file: `~/control-repo/hieradata/hostname.yaml`
 
-    ```yaml
-    ---
-    message: 'value from hostname'
-    ```
+```yaml
+---
+message: 'value from hostname'
+```
 
 ### Example file: `~/control-repo/manifests/site.pp`
 
-    ```ruby
-    node default {
-      # ...
-      $message = lookup('message')
-      notify { $message: }
-    }
-    ```
+```ruby
+node default {
+  # ...
+  $message = lookup('message')
+  notify { $message: }
+}
+```
 
 |  [Previous Lab](../lab-10.1-Inherited-classes)  |  [Next Lab](../lab-13.1-Designing-profiles)  |

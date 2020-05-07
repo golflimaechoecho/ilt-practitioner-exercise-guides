@@ -138,7 +138,7 @@ class system::hosts {
     ensure       => present,
     host_aliases => ['gitlab'],
     ip           => '192.168.X.X', ## use the IP of the classroom Gitlab server
-  }  
+  }
   host { 'localhost':
     ensure       => present,
     host_aliases => [
@@ -154,8 +154,8 @@ class system::hosts {
 ## Use your own hostname, alias and IP, or use facts from facter.
   host { $::fqdn:
     ensure       => present,
-    host_aliases =>  $::hostname,
-    ip           => '$::ipaddress,
+    host_aliases => $::hostname,
+    ip           => $::ipaddress,
   }
 }
 ```

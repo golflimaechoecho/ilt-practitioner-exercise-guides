@@ -115,7 +115,7 @@ root:    <%= $admin %>
 
 ```ruby
 class system::aliases (
-    $admin = 'root',
+    String $admin = 'root',
 ) {
     # uses $admin to build the aliases file
     file { '/etc/aliases':
@@ -123,7 +123,7 @@ class system::aliases (
       owner   => 'root',
       group   => 'root',
       mode    => '0644',
-      content => epp('aliases/aliases.epp', { admin => $admin }),
+      content => epp('system/aliases.epp', { admin => $admin }),
     }
 
     exec { '/usr/bin/newaliases':
