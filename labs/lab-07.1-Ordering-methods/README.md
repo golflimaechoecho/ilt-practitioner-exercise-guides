@@ -45,7 +45,7 @@ notify { 'This should come after the entire MySQL class is enforced':
 1. Change directory to your `[modulepath]`.
 
     ```cd $(puppet agent --configprint environmentpath)/production/modules```
-  
+
 2. Create a new module called `ordering`.
 
     ```pdk new module```
@@ -172,7 +172,7 @@ class ordering {
 ```ruby
 class ordering::mysql {
   class { '::mysql::server':
-    root_password    => 'strongpassword',
+    root_password => 'strongpassword',
   }
 
   class { '::mysql::bindings':
