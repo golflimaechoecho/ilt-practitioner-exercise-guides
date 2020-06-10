@@ -2,9 +2,11 @@
 
 Take a look at your `/etc/krb5.conf` file. This configures the Kerberos network authentication service. It is not configured on these machines, so your default realm should be set to `EXAMPLE.COM`. If we were to write classes that could use Kerberos authentication, it would likely be useful to know what this is set to.
 
-Your task is to write a `default_realm` fact to expose this information as a  global variable.  Using the command line to parse this value might look something like
+Your task is to write a `default_realm` fact to expose this information as a global variable. Using the command line to parse this value might look something like below (returns the first non-commented result):
 
-  ```awk '/default_realm/{print $NF}' /etc/krb5.conf```
+  ```/bin/awk '/^[ ]*[^#][ ]*default_realm/{print $NF;exit}' /etc/krb5.conf```
+
+**_ Prior to starting this lab, to ensure output is generated as expected, check `/etc/krb5.conf` and ensure `default_realm` is NOT commented out under the libdefaults section. If it is commented out, uncomment it before attempting to test the command line or the custom fact. _**
 
 ## Steps
 
@@ -72,7 +74,7 @@ kerberos/
 
 ```ruby
 Facter.add("default_realm") do
-  setcode "/bin/awk '/^#/ {next} /default_realm/{print $NF}' /etc/krb5.conf"
+  setcode "/bin/awk '/^[ ]*[^#][ ]*default_realm/{print $NF;exit}' /etc/krb5.conf"
 end
 ```
 
