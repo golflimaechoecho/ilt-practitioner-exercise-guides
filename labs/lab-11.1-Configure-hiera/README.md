@@ -2,7 +2,7 @@
 
 Hiera is a data separation layer that allows you to write classes that can easily adapt to customizations per node, per operating system, per environment, or any other facts. This allows the class logic to be straightforward and transparent, while still allowing extreme customizability. Even more so, it allows the end user to simply classify each node and specify parameters using Hiera rules, making the classification process less complicated.
 
-Hiera is a tool that runs on the Puppet master, but it is useful to have a representative data configuration on your local dev workstation for testing. In the classroom, we've set up a local Hiera configuration to pull data from `/etc/puppetlabs/code/hieradata/`. In this lab, you configure the Hiera hierarchy and create datasources; observing how data retrieval works.
+Hiera is a tool that runs on the Puppet master, but it is useful to have a representative data configuration on your local dev workstation for testing. In the classroom, we've set up a local Hiera configuration to pull data from `/etc/puppetlabs/code/data/`. In this lab, you configure the Hiera hierarchy and create datasources; observing how data retrieval works.
 
 **_Looking up data with `puppet lookup` passes the local scope (facts for the local node) for us automatically. To look up data for another node, simply specify that node's name with the `--node <node name>` argument._**
 
@@ -20,7 +20,7 @@ As the final step to this lab, you will commit your datasources to your reposito
     * set the hierarchy to query `trusted.certname`, `environment`, `common`
 1. Edit `common.yaml` in the Hiera datadir.
     * `cd /etc/puppetlabs/code`
-    * Edit `hieradata/common.yaml`
+    * Edit `data/common.yaml`
     * Take note of the value of the `message` key, or edit as desired.
 
 ### Retrieve data from Hiera
@@ -50,8 +50,8 @@ As the final step to this lab, you will commit your datasources to your reposito
 
 1. Windows Instructions: migrate your datasources to your control repository
     * Copy & paste each file into the corresponding file in your control repository.
-    * Edit `[control-repo]/hieradata/common.yaml`
-    * Edit `[control-repo]/hieradata/nodes/hostname.yaml`
+    * Edit `[control-repo]/data/common.yaml`
+    * Edit `[control-repo]/data/nodes/hostname.yaml`
 2. Add a `notify` resource to your `site.pp` to display the message.
     * Edit `~/control-repo/manifests/site.pp`
 3. Deploy your code.
@@ -69,7 +69,7 @@ version: 5
 
 defaults:
   datadir: "data"
-hierarchy: 
+hierarchy:
   - name: Yaml data
     data_hash: yaml_data
     paths:
@@ -94,21 +94,21 @@ hierarchy:
     - common
 ```
 
-### Example file `~/control-repo/hieradata/common.yaml`
+### Example file `~/control-repo/data/common.yaml`
 
 ```yaml
 ---
 message: 'value from common'
 ```
 
-### Example file: `~/control-repo/hieradata/studentN.yaml`
+### Example file: `~/control-repo/data/studentN.yaml`
 
 ```yaml
 ---
 message: 'value from StudentN'
 ```
 
-### Example file: `~/control-repo/hieradata/hostname.yaml`
+### Example file: `~/control-repo/data/hostname.yaml`
 
 ```yaml
 ---
