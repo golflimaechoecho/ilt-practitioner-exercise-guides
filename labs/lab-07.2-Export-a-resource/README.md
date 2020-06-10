@@ -67,10 +67,10 @@ system/
 ```ruby
 class system::classroom {
   # export a virtual host resource for yourself
-  @@host { $::fqdn:
+  @@host { $facts['fqdn']:
     ensure       => 'present',
-    host_aliases => [$::hostname],
-    ip           => $::ipaddress,
+    host_aliases => [$facts['hostname']],
+    ip           => $facts['ipaddress'],
     tag          => 'classroom',
   }
 
