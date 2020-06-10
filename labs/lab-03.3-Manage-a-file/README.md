@@ -2,7 +2,7 @@
 
 Now that we've had some exposure to the `.epp` template format, let's finish the `review::motd` class. If you've been using `.epp` for a while, this will be familiar. If not, you might struggle a bit. Feel free to ask any questions needed or run through the docs page for a brush-up.
 
-<https://docs.puppet.com/puppet/latest/lang_template_epp.html>
+<https://puppet.com/docs/puppet/latest/lang_template_epp.html>
 
 The exercise asks you to add some dynamic content to `/etc/motd` with an `.epp` template. For simplicity, we'll just use a few facts. If you'd rather use your own variables, remember that with `.epp`, you must pass them in with the variables hash.
 
@@ -19,7 +19,7 @@ The exercise asks you to add some dynamic content to `/etc/motd` with an `.epp` 
 1. Edit the `[modulepath]/review/templates/motd.epp` template in the `review` module.
    * Add a brief welcome message, using the `fqdn` of the host and any other facts you'd like.
 1. Deploy your codebase:
-  
+
     ```git init```
 
     ```git remote add origin git@gitlab.classroom.puppet.com:puppet/review.git```
