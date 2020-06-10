@@ -79,7 +79,7 @@ In this exercise, you will create a simple defined type that wraps a user type a
     The output should be similar to this
 
     ```plaintext
-    # sudo -su - kaitlin
+    # sudo -su kaitlin
     ______________
     < Hello there! >
     --------------
@@ -136,6 +136,7 @@ define system::managed_user (
   user { $title:
     ensure     => present,
     password   => $password,
+    home       => $homedir,
     managehome => true,
   }
 
@@ -164,5 +165,6 @@ alias mv='mv -i'
 if [ -f /etc/bashrc ]; then
         . /etc/bashrc
 fi
+cowsay 'Hello there!'
 ```
 |  [Previous Lab](../lab-05.1-Resource-purging)  |  [Next Lab](../lab-06.1-Validating-parameters)  |
