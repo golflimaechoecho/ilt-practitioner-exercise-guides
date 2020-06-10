@@ -10,9 +10,9 @@ We'll start with a simple class like the following and make sure it generates a 
 class system::aliases (
   $admin = 'root',
 ) {
-# uses $admin to build the aliases file
-file { '/etc/aliases':
-  ensure  => file,
+  # uses $admin to build the aliases file
+  file { '/etc/aliases':
+    ensure  => file,
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
@@ -50,12 +50,12 @@ file { '/etc/aliases':
 
 Ensure the class fails appropriately
 
-1. Edit `examples/aliases_array.pp`: declare with the `admin` parameter set to `["an", "array", "of", "names"]`
-1. Edit `examples/aliases_hash.pp`: declare with the `admin` parameter set to `{"first" => "jim", "second" => "bo"}`
+1. Edit `examples/aliases_array.pp`: declare with the `admin` parameter set to `['an', 'array', 'of', 'names']`
+1. Edit `examples/aliases_hash.pp`: declare with the `admin` parameter set to `{'first' => 'jim', 'second' => 'bo'}`
 1. Edit `examples/aliases_number.pp`: declare with the `admin` parameter set to `17`
 1. `puppet apply` each example manifest
 
-**_When typing data structures into the PE Node Classifier, the type of quote used is significant. For example, when typing in an array, quotes like `['an', 'array', 'of', 'strings']` would fail to parse correctly. Ensure that you use_** **only double quotes** **_when typing in the data structures shown._**
+**_ When typing data structures into the PE Node Classifier, the type of quote used is significant. For example, to enter the array above in the PE Node classifier, the single quotes should be replaced with double quotes, eg: _**`["an", "array", "of", "strings"]`**_ to ensure it is parsed correctly. Ensure that you use_** **only double quotes** **_when typing in the data structures shown._**
 
 #### Expected Output
 
@@ -115,21 +115,21 @@ root:    <%= $admin %>
 
 ```ruby
 class system::aliases (
-    String $admin = 'root',
+  String $admin = 'root',
 ) {
-    # uses $admin to build the aliases file
-    file { '/etc/aliases':
-      ensure  => file,
-      owner   => 'root',
-      group   => 'root',
-      mode    => '0644',
-      content => epp('system/aliases.epp', { admin => $admin }),
-    }
+  # uses $admin to build the aliases file
+  file { '/etc/aliases':
+    ensure  => file,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    content => epp('system/aliases.epp', { admin => $admin }),
+  }
 
-    exec { '/usr/bin/newaliases':
-      refreshonly => true,
-      subscribe   => File['/etc/aliases'],
-    }
+  exec { '/usr/bin/newaliases':
+    refreshonly => true,
+    subscribe   => File['/etc/aliases'],
+  }
 }
 ```
 
@@ -150,7 +150,7 @@ class { 'system::aliases':
 
 ```ruby
 class { 'system::aliases':
-  admin   => ["an", "array", "of", "names"],
+  admin => ['an', 'array', 'of', 'names'],
 }
 ```
 
@@ -158,7 +158,7 @@ class { 'system::aliases':
 
 ```ruby
 class { 'system::aliases':
-  admin   => {"first" => "jim", "second" => "bo"},
+  admin => {'first' => 'jim', 'second' => 'bo'},
 }
 ```
 
@@ -166,7 +166,7 @@ class { 'system::aliases':
 
 ```ruby
 class { 'system::aliases':
-  admin   => 17,
+  admin => 17,
 }
 ```
 
