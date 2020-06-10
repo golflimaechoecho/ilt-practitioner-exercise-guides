@@ -180,7 +180,7 @@ While we're at it, you can earn some brownie points by extending the functionali
 [root@training modules]# tree webapp/
 webapp/
 ├── examples
-│   ├── init.pp
+│   ├── wordpress.pp
 └── manifests
     ├── init.pp
     ├── params.pp
