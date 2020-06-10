@@ -93,9 +93,9 @@ assistance from the instructor as needed.
 
 ### Your module structure should resemble
 
-[root@training modules]# tree review/
 
 ```shell
+[root@training modules]# tree review/
   review/
   ├── examples
   │   ├── motd.pp
@@ -136,6 +136,7 @@ class review (
   user { $user:
     ensure     => present,
     shell      => '/bin/bash',
+    home       => $homedir,
     managehome => true,
   }
 
