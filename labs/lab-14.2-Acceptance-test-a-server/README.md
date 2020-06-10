@@ -20,15 +20,15 @@ In this lab you will create serverspec tests for the Apache module from the prev
 1. Add the Serverspec gem to the Gemfile as the documentation at https://github.com/puppetlabs/pdk-templates#setting-custom-gems-in-the-gemfile
    * update /apache/.sync.yml
    ```plaintext
-   
+
    Gemfile:
      optional:
        ':development':
          - gem: 'puppet-lint-my_awesome_custom_module'
    ```
-   
+
    * execute `pdk update --force`
-   
+
    ```plaintext
    [root@training serverspec]# pdk update --force
    pdk (INFO): Updating studentN-apache using the template at https://github.com/puppetlabs/pdk-templates...
@@ -45,7 +45,7 @@ In this lab you will create serverspec tests for the Apache module from the prev
 
    1 files modified.
    ```
-   
+
 1. Create testing directories.
     * `cd ~/development/apache`
     * `mkdir serverspec`
