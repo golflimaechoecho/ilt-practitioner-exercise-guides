@@ -53,7 +53,7 @@ Your job is to refactor this example to use composition rather than inheritance.
 1. Install the modules used for this lab:
 
     * Edit `[control-repo]/Puppetfile`.
-    * Uncomment the following lines in the Puppetfile.  
+    * Uncomment the following lines in the Puppetfile.
 
       ```plaintext
       mod 'puppetlabs/apache'
@@ -124,6 +124,18 @@ Your job is to refactor this example to use composition rather than inheritance.
 1. Run a local puppet apply
 
     ```puppet apply examples/wordpress.pp --noop```
+
+    **_ Testing using `puppet apply` as shown above will generate warnings for exported resources and deprecation errors. If these are the only warnings, and pdk validate reports no other issues, continue with classifying below. _**
+
+1. Commit and deploy your codebase.
+
+    * Commit the changes for the `webapp` module
+    * Edit `[control-repo]/Puppetfile`.
+    * Uncomment the `webapp` lines in the Puppetfile.
+
+1. Classify your node with the `webapp::wordpress` class.
+
+1. Run `puppet agent -t`
 
     The output should be similar to this:
 
