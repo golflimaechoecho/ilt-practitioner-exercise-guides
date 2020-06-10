@@ -56,7 +56,7 @@ If you damage the hosts file and cannot reach the master, let the instructor kno
     * Create a commit: `git commit -m "Initial Commit"`
     * Push the commit to the Git server: `git push origin studentN`
 1. Change directories to `[control-repo]`
-    * Edit the `Puppetfile` and uncomment out these lines.  
+    * Edit the `Puppetfile` and uncomment out these lines.
 
       ```plaintext
       mod 'system',
@@ -71,7 +71,7 @@ If you damage the hosts file and cannot reach the master, let the instructor kno
 1. Point your browser at <https://classXXXX-master.classroom.puppet.com/>
 
 1. Enter the credentials:
-    * **username:** *studentN*  
+    * **username:** *studentN*
     * **password:** *puppetlabs*
 
 1. In the left menu, under **CONFIGURE**, click **Classification**
@@ -152,10 +152,10 @@ class system::hosts {
   }
 
 ## Use your own hostname, alias and IP, or use facts from facter.
-  host { $::fqdn:
+  host { $facts['fqdn']:
     ensure       => present,
-    host_aliases => $::hostname,
-    ip           => $::ipaddress,
+    host_aliases => $facts['hostname'],
+    ip           => $facts['ipaddress'],
   }
 }
 ```
