@@ -18,13 +18,15 @@ In this lab you will create serverspec tests for the Apache module from the prev
 
 ### Configure your module for testing
 1. Add the Serverspec gem to the Gemfile as the documentation at https://github.com/puppetlabs/pdk-templates#setting-custom-gems-in-the-gemfile
-   * update /apache/.sync.yml
-   ```plaintext
+   * update ~/development/apache/.sync.yml
 
+   ```plaintext
    Gemfile:
      optional:
        ':development':
-         - gem: 'puppet-lint-my_awesome_custom_module'
+         - gem: 'serverspec'
+           version: '>= 2.36.0'
+           source: 'https://rubygems.org/'
    ```
 
    * execute `pdk update --force`
@@ -58,19 +60,22 @@ In this lab you will create serverspec tests for the Apache module from the prev
 ### Run tests and iterate over improvements
 
 1. Ensure that Apache is uninstalled so you can observe a failure.
-    * `yum erase httpd`
+    * `sudo yum erase httpd`
 1. Run the spec tests.
     * `pdk bundle exec rake spec`
-1. Enforce the class and run the tests again.
-    * `puppet apply ../examples/init.pp --modulepath ~/development`
+1. Enforce the class and run the tests again **_(note the `puppet apply` will fail if you have not completed the fixes from [previous Lab 14.1 Unit test a class](../lab-14.1-Unit-test-a-class))_**.
+    * `sudo puppet apply ../examples/init.pp --modulepath ~/development`
     * `pdk bundle exec rake spec`
 1. Update your class and/or tests until tests pass.
 
 #### Expected Output
 
 ```plaintext
-[root@training serverspec]# rake spec
-/usr/bin/ruby -S rspec spec/localhost/sample_spec.rb
+[root@training serverspec]# pdk bundle exec rake spec
+pdk (INFO): Using Ruby 2.5.7
+pdk (INFO): Using Puppet 6.10.1
+/opt/puppetlabs/pdk/private/ruby/2.5.7/bin/ruby -I/opt/puppetlabs/pdk/share/cache/ruby/2.5.0/gems/rspec-core-3.9.0/lib:/opt/puppetlabs/pdk/share/cache/ruby/2.5.0/gems/rspec-support-3.9.0/lib /opt/puppetlabs/pdk/share/cache/ruby/2.5.0/gems/rspec-core-3.9.0/exe/rspec --pattern spec/\{aliases,classes,defines,functions,hosts,integration,plans,tasks,type_aliases,types,unit\}/\*\*/\*_spec.rb
+Run options: exclude {:bolt=>true}
 ......
 
 Finished in 0.07377 seconds
@@ -118,8 +123,8 @@ describe package('httpd') do
 end
 
 describe service('httpd') do
-  it { should be_enabled   }
-  it { should be_running   }
+  it { should be_enabled }
+  it { should be_running }
 end
 
 describe port(80) do
