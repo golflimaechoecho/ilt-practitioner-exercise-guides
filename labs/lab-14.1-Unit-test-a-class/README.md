@@ -1,6 +1,6 @@
 # Lab 14.1: Unit test a class
 
-Getting your modules to work in a test environment is only the first step towards a testing framework that will ensure a reliable, flexible, and maintainable Puppet codebase. As your Puppet envrionment grows in size and complexity, you will need a way to validate that your modules work consistently on multiple platforms and under a variety of conditions.
+Getting your modules to work in a test environment is only the first step towards a testing framework that will ensure a reliable, flexible, and maintainable Puppet codebase. As your Puppet environment grows in size and complexity, you will need a way to validate that your modules work consistently on multiple platforms and under a variety of conditions.
 
 You will also find that as a codebase gets more complex it becomes exponentially more difficult to change one part of the code without affecting other parts.
 
@@ -32,7 +32,7 @@ In both delivery methods for this class, we'll set up a local development & test
     * `cd apache`
 1. Update the RSpec configuration files as required. Run `pdk convert --add-tests`, and when it asks for OS support, choose `RedHat` and `Debian`, accept the changes, and review the files that were added or modified.
 1. Note that this module has no external dependencies, so the only optional entry in your `.fixtures.yml` file is  the `symlinks:` section which could be the module itself: `"apache": "#{source_dir}"`
-   * Note this is not needed as PDK provides a helper for this, but the `.fixture.yml` file must exist.
+   * Note this is not needed as PDK provides a helper for this, but the `.fixtures.yml` file must exist.
 
 ### Develop unit tests
 
@@ -107,8 +107,9 @@ In both delivery methods for this class, we'll set up a local development & test
     describe 'apache' do
       on_supported_os.each do |os, os_facts|
         context "on #{os}" do
-        let(:facts) { os_facts }
-        it { is_expected.to compile }
+          let(:facts) { os_facts }
+
+          it { is_expected.to compile }
         end
       end
     end
@@ -166,6 +167,7 @@ describe 'apache' do
   on_supported_os.each do |os, os_facts|
     context "on #{os}" do
       let(:facts) { os_facts }
+
       it { is_expected.to contain_service('apache').with('ensure' => 'running', 'enable' => true) }
       it { is_expected.to contain_class('apache') }
       it { is_expected.to compile }
@@ -223,7 +225,7 @@ class apache inherits apache::params {
     path    => $apache::params::config,
     ensure  => file,
     # Use $osfamily instead of $operatingsystem and double quote
-    source  => "puppet:///modules/apache/${::osfamily}.conf",
+    source  => "puppet:///modules/apache/${facts['osfamily']}.conf",
     require => Package['apache'],
   }
   service { 'apache':
@@ -231,6 +233,24 @@ class apache inherits apache::params {
     ensure    => running,
     enable    => true,
     subscribe => File['apache_config'],
+  }
+}
+```
+#### Example file: `apache/manifests/params.pp`
+
+```ruby
+class apache::params {
+  case $facts['osfamily'] {
+    'redhat': {
+      $package = 'httpd'
+      $config  = '/etc/httpd/conf/httpd.conf'
+      $service = 'httpd'
+    }
+    'debian': {
+      $package = 'apache2'
+      $config  = '/etc/apache2/apache2.conf'
+      $service = 'apache2'
+    }
   }
 }
 ```
